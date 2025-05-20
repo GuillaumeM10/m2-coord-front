@@ -3,12 +3,9 @@ import {BigButtonComponent} from '../../../components/common/big-button/big-butt
 
 @Component({
   selector: 'app-historical-figure',
-  imports: [
-    BigButtonComponent
-  ],
+  imports: [BigButtonComponent],
   templateUrl: './historical-figure.component.html',
-  styleUrl: './historical-figure.component.scss'
+  styleUrl: './historical-figure.component.scss',
 })
 export class HistoricalFigureComponent {
-
 }

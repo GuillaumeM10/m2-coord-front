@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-big-button',
   imports: [],
   templateUrl: './big-button.component.html',
-  styleUrl: './big-button.component.scss'
+  styleUrl: './big-button.component.scss',
 })
 export class BigButtonComponent {
   @Input() label = '';
