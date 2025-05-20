@@ -10,5 +10,4 @@ import { scoreLinesMock } from '../../mocks/scoreboard/score-lines.mock';
   styleUrl: './scoreboard-page.component.scss',
 })
 export class ScoreboardPageComponent {
-  public scoreLines: ScoreLineType[] = scoreLinesMock;
 }
