@@ -1,16 +1,17 @@
 import { Routes } from '@angular/router';
+import {GamesComponent} from './pages/games/games.component';
+import {HistoricalFigureComponent} from './pages/games/historical-figure/historical-figure.component';
 export const routes: Routes = [
   {
     path: 'games',
     children: [
       {
         path: '',
-        loadComponent: () => import('./pages/games/games.component').then(m => m.GamesComponent)
+        component: GamesComponent
       },
       {
         path: 'historical-figure',
-        loadComponent: () =>
-          import('./pages/games/historical-figure/historical-figure.component').then(m => m.HistoricalFigureComponent)
+        component: HistoricalFigureComponent
       }
     ]
   }
