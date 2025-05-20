@@ -1,0 +1,46 @@
+.dialog-title {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5em;
+  font-weight: 600;
+  color: #333;
+}
+
+.dialog-content {
+  background: #fafafa;
+  padding: 1em 0 2em;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.option-btn {
+  font-weight: 500;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: #e3f2fd; // bleu clair
+  }
+
+  &.mat-radio-checked {
+    background-color: #bbdefb; // bleu un peu plus soutenu
+    border-color: #42a5f5;
+  }
+}
+
+.actions {
+  padding-top: 1em;
+  button {
+    margin-left: 0.5em;
+    min-width: 80px;
+  }
+}
