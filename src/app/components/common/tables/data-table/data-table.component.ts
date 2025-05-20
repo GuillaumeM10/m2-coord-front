@@ -12,6 +12,7 @@ import {
   MatTable,
 } from '@angular/material/table';
 import { CdkTableDataSourceInput } from '@angular/cdk/table';
+import {TitleCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-data-table',
@@ -26,6 +27,7 @@ import { CdkTableDataSourceInput } from '@angular/cdk/table';
     MatRowDef,
     MatTable,
     MatHeaderCellDef,
+    TitleCasePipe,
   ],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss',
