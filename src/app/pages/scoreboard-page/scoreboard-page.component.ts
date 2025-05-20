@@ -1,34 +1,14 @@
 import { Component } from '@angular/core';
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell,
-  MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
-  MatTable
-} from '@angular/material/table';
-import {scoreLinesMock} from '../../mocks/scoreboard/score-lines.mock';
-import {ScoreLineType} from '../../types/mocks/score-line.type';
+import { DataTableComponent } from '../../components/common/tables/data-table/data-table.component';
+import { ScoreLineType } from '../../types/mocks/score-line.type';
+import { scoreLinesMock } from '../../mocks/scoreboard/score-lines.mock';
 
 @Component({
   selector: 'app-scoreboard-page',
-  imports: [
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatCell,
-    MatHeaderCellDef,
-    MatCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatRow,
-    MatRowDef
-  ],
+  imports: [DataTableComponent],
   templateUrl: './scoreboard-page.component.html',
   styleUrl: './scoreboard-page.component.scss',
 })
 export class ScoreboardPageComponent {
-  displayedColumns: string[] = Object.keys(scoreLinesMock[0]);
-  dataSource: ScoreLineType[] = scoreLinesMock;
+  public scoreLines: ScoreLineType[] = scoreLinesMock;
 }
