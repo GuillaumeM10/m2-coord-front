@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-scoreboard-page',
   imports: [],
   templateUrl: './scoreboard-page.component.html',
-  styleUrl: './scoreboard-page.component.scss'
+  styleUrl: './scoreboard-page.component.scss',
 })
-export class ScoreboardPageComponent {
-
-}
+export class ScoreboardPageComponent {}
