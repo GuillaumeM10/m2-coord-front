@@ -8,9 +8,8 @@ describe('HistoricalFigureComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HistoricalFigureComponent]
-    })
-    .compileComponents();
+      imports: [HistoricalFigureComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HistoricalFigureComponent);
     component = fixture.componentInstance;

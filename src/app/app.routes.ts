@@ -7,12 +7,12 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: GamesComponent
+        component: GamesComponent,
       },
       {
         path: 'historical-figure',
-        component: HistoricalFigureComponent
-      }
-    ]
-  }
+        component: HistoricalFigureComponent,
+      },
+    ],
+  },
 ];
