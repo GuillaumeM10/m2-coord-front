@@ -8,7 +8,7 @@ describe('DataTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DataTableComponent]
+      imports: [DataTableComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DataTableComponent);
