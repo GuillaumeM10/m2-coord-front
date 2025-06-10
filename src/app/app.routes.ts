@@ -6,14 +6,15 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./pages/games/games.component').then(m => m.GamesComponent)
+        loadComponent: () => import('./pages/games/games.component').then(m => m.GamesComponent),
       },
       {
         path: 'historical-figure',
         loadComponent: () =>
-          import('./pages/games/historical-figure/historical-figure.component').then(m => m.HistoricalFigureComponent)
-      }
-    ]
-  }
+          import('./pages/games/historical-figure/historical-figure.component').then(
+            m => m.HistoricalFigureComponent,
+          ),
+      },
+    ],
+  },
 ];
-
