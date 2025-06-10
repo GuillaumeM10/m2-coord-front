@@ -1,9 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Game } from '../../models/game.model';
+import { GamesService } from '../../services/games.service';
+import { GameOptionsDialogComponent } from '../../components/games/game-options-dialog/game-options-dialog.component';
 
 @Component({
   selector: 'app-games',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatDialogModule],
   templateUrl: './games.component.html',
-  styleUrl: './games.component.scss',
+  styleUrls: ['./games.component.scss'],
 })
-export class GamesComponent {}
+export class GamesComponent implements OnInit {
+  games: Game[] = [];
+
+  constructor(
+    private gamesService: GamesService,
+    private dialog: MatDialog,
+  ) {}
+
+  ngOnInit(): void {
+    this.gamesService.getGames().subscribe(games => {
+      this.games = games;
+    });
+  }
+
+  openGameOptions(game: Game): void {
+    this.dialog.open(GameOptionsDialogComponent, {
+      data: { name: game.name },
+    });
+  }
+}
