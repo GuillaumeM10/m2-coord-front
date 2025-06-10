@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/materia
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-options-dialog',
@@ -17,12 +18,15 @@ export class GameOptionsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<GameOptionsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public game: { name: string },
+    private routerService: Router,
   ) {}
 
-  play() {
+  async play() {
     if (this.selectedOption) {
       console.log('Option choisie :', this.selectedOption);
       this.dialogRef.close(this.selectedOption);
+      // TODO: Redirect by id
+      await this.routerService.navigate(['/games/historical-figure']);
     }
   }
 
