@@ -1,7 +1,6 @@
 @use 'variables' as *;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@use 'tailwind.css' as *;
+
 body {
   margin: 0;
   height: 100vh;
@@ -35,4 +34,13 @@ body {
   ),
     linear-gradient(45deg, $primary-color, $primary-color);
   overflow: hidden;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Sigmar One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
