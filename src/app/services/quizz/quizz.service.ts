@@ -1,7 +1,8 @@
 import { Question } from '../../models/questions.model';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { historicalFigureQuestionsMock } from '../../../mocks/historical-figure-questions.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +10,10 @@ import { Observable } from 'rxjs';
 export class QuizzService {
   private http: HttpClient = inject(HttpClient);
   private url = 'https://localhost:3000/questions'; // Replace with your actual API endpoint
-  constructor() {
-    // Initialize the service if needed
-  }
 
-  // Add methods to fetch quizzes, handle answers, etc.
   getQuestions(id: string): Observable<Question[]> {
-    // This method should return questions based on the quiz id
-    // For example, it could fetch data from an API or a local JSON file
-    return this.http.get<Question[]>(this.url + `/${id}`);
+    console.log(`Fetching questions for ID: ${id}`);
+    //return this.http.get<Question[]>(this.url + `/${id}`);
+    return of(historicalFigureQuestionsMock);
   }
 }
