@@ -4,4 +4,6 @@
 
 export { AppService } from './services/app.service';
 export { FilesService } from './services/files.service';
+export { CountryService } from './services/country.service';
+export { AnswerService } from './services/answer.service';
 export { GamesService } from './services/games.service';

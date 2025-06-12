@@ -8,6 +8,8 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { AppService } from './services/app.service';
 import { FilesService } from './services/files.service';
+import { CountryService } from './services/country.service';
+import { AnswerService } from './services/answer.service';
 import { GamesService } from './services/games.service';
 
 /**
@@ -20,6 +22,8 @@ import { GamesService } from './services/games.service';
   providers: [
     AppService,
     FilesService,
+    CountryService,
+    AnswerService,
     GamesService,
     ApiConfiguration
   ],
