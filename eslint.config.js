@@ -42,6 +42,7 @@ module.exports = tseslint.config(
       '.angular/**',
       '.idea/**',
       '.vscode/**',
+      'dist/**',
       'node_modules/**',
       'public/**',
       'src/api/**',
