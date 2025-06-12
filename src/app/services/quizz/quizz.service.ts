@@ -11,7 +11,7 @@ export class QuizzService {
   private http: HttpClient = inject(HttpClient);
   private url = 'https://localhost:3000/questions'; // Replace with your actual API endpoint
 
-  getQuestions(id: string): Observable<QuestionModelMock[]> {
+  getQuestions(id: string): Observable<QuestionModel[]> {
     console.log(`Fetching questions for ID: ${id}`);
     //return this.http.get<Question[]>(this.url + `/${id}`);
     return of(historicalFigureQuestionsDataMock);
