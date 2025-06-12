@@ -1,5 +1,4 @@
 <h2 mat-dialog-title>{{ game.name }}</h2>
-
 <mat-dialog-content>
   <p>Choisissez une option de jeu :</p>
 
@@ -8,9 +7,9 @@
     class="options-group"
     aria-label="Choix de l'option"
   >
-    <mat-radio-button value="facile">Facile</mat-radio-button>
-    <mat-radio-button value="intermediaire">Intermédiaire</mat-radio-button>
-    <mat-radio-button value="difficile">Difficile</mat-radio-button>
+    <mat-radio-button *ngFor="let mode of game.modes" [value]="mode">
+      {{ mode }}
+    </mat-radio-button>
   </mat-radio-group>
 </mat-dialog-content>
 
