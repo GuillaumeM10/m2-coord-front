@@ -8,17 +8,31 @@
   ></app-big-button>
 </div>
 
-<div *ngIf="gameStarted" class="flex p-4 min-h-screen">
-  <div class="flex flex-col justify-center items-center w-1/3 gap-4">
-    <img
-      alt="question_image"
-      class="w-64 h-64 object-cover rounded-lg"
-      src="{{ currentQuestion?.image }}"
-    />
-  </div>
-  <div class="flex flex-col justify-center items-center w-2/3 gap-4">
-    @for (choice of currentQuestion?.choices; track choice) {
-      <span class="p-4">{{ choice }}</span>
-    }
+<div *ngIf="gameStarted && !gameEnded">
+  <div class="flex p-4 min-h-screen">
+    <div class="flex flex-col justify-center items-center w-1/2 gap-4">
+      <img
+        alt="question_image"
+        class="w-100 h-100 object-cover rounded-lg"
+        src="{{ currentQuestion?.image }}"
+      />
+    </div>
+    <div class="flex flex-col justify-center items-center w-1/2 gap-4">
+      @for (choice of currentQuestion?.choices; track choice) {
+        <div class="flex items-center justify-items-start gap-2">
+          <input
+            type="radio"
+            name="choice"
+            [value]="choice"
+            (change)="onChoiceSelected(choice)"
+            class="mr-2 cursor-pointer justify-items-start"
+          />
+          <span class="p-4">{{ choice }}</span>
+        </div>
+      }
+      <app-small-button (clickEmitter)="nextQuestion()" label="Suivant" type="submit"/>
+    </div>
   </div>
 </div>
+
+<div *ngIf="gameStarted && gameEnded">game ended</div>
