@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { historicalFigureQuestionsDataMock } from '@mocks/data/historical-figure-questions.data.mock';
-import {QuestionModelMock} from '@mocks/models/question.model.mock';
+import { QuestionModelMock } from '@mocks/models/question.model.mock';
 
 @Injectable({
   providedIn: 'root',
