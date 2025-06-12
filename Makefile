@@ -2,7 +2,7 @@ node_modules:
 	npm install
 
 run: node_modules
-		ng serve
+		npm run start
 
 lint: node_modules
 		npm run lint
@@ -10,4 +10,10 @@ lint: node_modules
 format: node_modules
 		npm run format
 
-.PHONY: run lint format
+tests: node_modules
+		npm run test
+
+api: node_modules
+		npm run generate:api:files
+
+.PHONY: run lint format tests api
