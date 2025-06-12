@@ -1,4 +1,4 @@
-export interface Question {
+export interface QuestionModel {
   id: string;
   image: string;
   choices: string[];

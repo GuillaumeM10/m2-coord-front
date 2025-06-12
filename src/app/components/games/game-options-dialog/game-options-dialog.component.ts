@@ -3,8 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/materia
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
-import { Game } from '../../../models/game.model';
 import { CommonModule } from '@angular/common';
+import { GameDto } from '@api/models/game-dto';
 
 @Component({
   selector: 'app-game-options-dialog',
@@ -18,7 +18,7 @@ export class GameOptionsDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<GameOptionsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public game: Game,
+    @Inject(MAT_DIALOG_DATA) public game: GameDto,
   ) {
     console.log('GAME DATA:', game);
   }

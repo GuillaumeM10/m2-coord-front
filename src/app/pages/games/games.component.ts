@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { Game } from '../../models/game.model';
-import { GamesService } from '../../services/games.service';
-import { GameOptionsDialogComponent } from '../../components/games/game-options-dialog/game-options-dialog.component';
+import { GamesService } from '@app/services/games.service';
+import { GameOptionsDialogComponent } from '@app/components/games/game-options-dialog/game-options-dialog.component';
 import { HttpClient } from '@angular/common/http';
+import { GameDto } from '@api/models/game-dto';
 
 @Component({
   selector: 'app-games',
@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./games.component.scss'],
 })
 export class GamesComponent implements OnInit {
-  games: Game[] = [];
+  games: GameDto[] = [];
 
   constructor(
     private gamesService: GamesService,
@@ -29,7 +29,7 @@ export class GamesComponent implements OnInit {
     });
   }
 
-  openGameOptions(game: Game): void {
+  openGameOptions(game: GameDto): void {
     this.dialog.open(GameOptionsDialogComponent, {
       data: game,
     });

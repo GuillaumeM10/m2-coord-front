@@ -1,6 +1,6 @@
-import { Question } from '../app/models/questions.model';
+import { QuestionModel } from '@mocks/models/question.model.mock';
 
-export const historicalFigureQuestionsMock: Question[] = [
+export const historicalFigureQuestionsDataMock: QuestionModel[] = [
   {
     id: '1',
     image: 'https://picsum.photos/400/400',

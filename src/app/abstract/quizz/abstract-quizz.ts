@@ -1,14 +1,14 @@
-import { Question } from '../../models/questions.model';
 import { DestroyRef, inject } from '@angular/core';
-import { QuizzService } from '../../services/quizz/quizz.service';
+import { QuizzService } from '@app/services/quizz/quizz.service';
+import { QuestionModel } from '@mocks/models/question.model.mock';
 
 export abstract class AbstractQuizz {
   protected quizzService = inject(QuizzService);
 
   protected gameStarted = false;
   protected gameEnded = false;
-  protected currentQuestion: Question | undefined;
-  protected questions: Question[] | undefined;
+  protected currentQuestion: QuestionModel | undefined;
+  protected questions: QuestionModel[] | undefined;
   protected destroyRef: DestroyRef = inject(DestroyRef);
   protected choosenAnswers: { id: string; answer: string }[] = [];
 
