@@ -16,13 +16,12 @@ import { CommonModule } from '@angular/common';
 export class GameOptionsDialogComponent {
   selectedOption: string | null = null;
 
-constructor(
-  public dialogRef: MatDialogRef<GameOptionsDialogComponent>,
-  @Inject(MAT_DIALOG_DATA) public game: Game,
-) {
-  console.log('GAME DATA:', game);
-}
-
+  constructor(
+    public dialogRef: MatDialogRef<GameOptionsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public game: Game,
+  ) {
+    console.log('GAME DATA:', game);
+  }
 
   play() {
     if (this.selectedOption) {
