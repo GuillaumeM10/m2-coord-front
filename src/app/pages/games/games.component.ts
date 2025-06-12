@@ -5,11 +5,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service';
 import { GameOptionsDialogComponent } from '../../components/games/game-options-dialog/game-options-dialog.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-games',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatDialogModule],
+  providers: [HttpClient],
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.scss'],
 })
@@ -29,7 +31,7 @@ export class GamesComponent implements OnInit {
 
   openGameOptions(game: Game): void {
     this.dialog.open(GameOptionsDialogComponent, {
-      data: { name: game.name },
+      data: game,
     });
   }
 }
