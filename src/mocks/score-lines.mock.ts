@@ -1,9 +1,9 @@
-export type ScoreLineType = {
+export interface ScoreLineType {
   name: string;
   position: number;
   weight: number;
   symbol: string;
-};
+}
 
 export const scoreLinesMock: ScoreLineType[] = [
   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
