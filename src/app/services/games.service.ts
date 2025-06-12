@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Game } from '../models/game.model';
-import { environment } from '../../environements/environement';
+import { GameDto } from '@api/models/game-dto';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class GamesService {
 
   constructor(private http: HttpClient) {}
 
-  getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(this.apiUrl);
+  getGames(): Observable<GameDto[]> {
+    return this.http.get<GameDto[]>(this.apiUrl);
   }
 }
