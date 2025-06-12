@@ -39,6 +39,14 @@ module.exports = tseslint.config(
         },
       ],
     },
+    ignores: [
+      '.angular/**',
+      '.idea/**',
+      '.vscode/**',
+      'node_modules/**',
+      'public/**',
+      'src/api/**',
+    ]
   },
   {
     files: ['**/*.html'],
