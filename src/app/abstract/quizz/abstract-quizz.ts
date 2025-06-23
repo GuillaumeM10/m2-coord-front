@@ -1,4 +1,3 @@
-// eslint-disable-next-line prettier/prettier
 import { DestroyRef, inject } from '@angular/core';
 import { QuizzService } from '@app/services/quizz/quizz.service';
 import { QuestionModel } from '@mocks/models/question.model.mock';
@@ -16,7 +15,7 @@ export abstract class AbstractQuizz {
   protected game = '';
 
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];
-  protected currentQuestionIndex = 0; // <- Ajouté
+  protected currentQuestionIndex = 0;
 
   protected startGame(): void {
     this.gameStarted = true;
@@ -31,43 +30,30 @@ export abstract class AbstractQuizz {
     }
   }
 
-  protected nextQuestion(): void {
+  protected checkAnswerAndGoNext(): void {
     this.quizzService.answerIsCorrect(this.choosenAnswer).subscribe({
-      next: isCorrect => {
-        console.log('Bonne réponse :', isCorrect);
-        this.updateQuestionStatus(this.currentQuestionIndex, isCorrect ? 'correct' : 'wrong');
-        this.advanceQuestion();
+      next: (response: { isAnswerCorrect: boolean }) => {
+        const isCorrect = response.isAnswerCorrect;
+        console.log('Réponse du service:', response);
+        this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
+        this.goToNextQuestion();
       },
-      error: err => {
-        console.error('Erreur lors de la vérification de la réponse :', err);
-        this.updateQuestionStatus(this.currentQuestionIndex, 'wrong');
-        this.advanceQuestion();
+      error: () => {
+        this.questionStatuses[this.currentQuestionIndex] = 'wrong';
+        this.goToNextQuestion();
       },
     });
   }
 
-  private advanceQuestion(): void {
-    if (!this.questions) {
-      this.gameEnded = true;
-      this.currentQuestion = undefined;
-      console.log('Le jeu est terminé.');
-      return;
-    }
-
+  private goToNextQuestion(): void {
     this.currentQuestionIndex++;
-
-    if (this.currentQuestionIndex >= this.questions.length) {
+    if (this.currentQuestionIndex >= (this.questions?.length || 0)) {
       this.gameEnded = true;
       this.currentQuestion = undefined;
       console.log('Le jeu est terminé.');
-      return;
+    } else {
+      this.currentQuestion = this.questions![this.currentQuestionIndex];
+      this.choosenAnswer = { questionId: '', answer: '' }; // reset réponse
     }
-
-    this.currentQuestion = this.questions[this.currentQuestionIndex];
-    this.choosenAnswer = { questionId: '', answer: '' };
-  }
-
-  private updateQuestionStatus(index: number, status: 'correct' | 'wrong') {
-    this.questionStatuses[index] = status;
   }
 }
