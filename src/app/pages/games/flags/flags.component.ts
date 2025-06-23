@@ -34,7 +34,6 @@ export class FlagsComponent extends AbstractQuizz implements OnInit {
     this.quizzService.answerIsCorrect(this.choosenAnswer).subscribe({
       next: (response: { isAnswerCorrect: boolean }) => {
         const isCorrect = response.isAnswerCorrect;
-        console.log('Réponse du service:', response);
         this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
         this.goToNextQuestion();
       },

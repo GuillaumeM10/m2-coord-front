@@ -17,7 +17,7 @@
         src="{{ currentQuestion?.image }}"
       />
     </div>
-    <div class="flex flex-col justify-center items-center w-1/2 gap-4">
+    <div class="flex flex-col justify-center items-start w-1/2 gap-4">
       @for (choice of currentQuestion?.choices; track choice) {
         <div class="flex items-center justify-items-start gap-2">
           <input
