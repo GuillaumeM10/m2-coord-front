@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { FlagsComponent } from './flags.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { QuizzService } from '../../../services/quizz/quizz.service';
@@ -10,7 +11,7 @@ describe('FlagsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [FlagsComponent, HttpClientTestingModule],
       providers: [
         {
           provide: QuizzService,

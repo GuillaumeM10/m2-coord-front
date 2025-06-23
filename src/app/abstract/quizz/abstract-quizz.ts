@@ -1,17 +1,18 @@
-import { Question } from '../../models/questions.model';
+// eslint-disable-next-line prettier/prettier
 import { DestroyRef, inject } from '@angular/core';
-import { QuizzService } from '../../services/quizz/quizz.service';
-import { Answer } from '../../models/answer.model';
+import { QuizzService } from '@app/services/quizz/quizz.service';
+import { QuestionModel } from '@mocks/models/question.model.mock';
 
 export abstract class AbstractQuizz {
-  protected quizzService = inject(QuizzService);
+  protected quizzService: QuizzService = inject(QuizzService);
 
   protected gameStarted = false;
   protected gameEnded = false;
-  protected currentQuestion: Question | undefined;
-  protected questions: Question[] | undefined;
+  protected currentQuestion: QuestionModel | undefined;
+  protected questions: QuestionModel[] | undefined;
   protected destroyRef: DestroyRef = inject(DestroyRef);
-  protected choosenAnswer: Answer = { questionId: '', answer: '' };
+  // TODO: Fix this type
+  protected choosenAnswer: { questionId: string; answer: string } = { questionId: '', answer: '' };
   protected game = '';
 
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];

@@ -10,7 +10,8 @@
     "test:cov": "ng test --watch=false --coverage",
     "serve:ssr:temp": "node dist/temp/server/server.mjs",
     "lint": "ng lint",
-    "format": "prettier --write \"src/**/*.{ts,html,css,scss}\""
+    "format": "prettier --write \"src/**/*.{ts,html,css,scss}\"",
+    "generate:api:files": "scripts/generate-api-files.sh"
   },
   "private": true,
   "dependencies": {

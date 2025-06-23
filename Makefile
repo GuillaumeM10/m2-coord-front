@@ -11,10 +11,13 @@ lint: node_modules
 format: node_modules
 		npm run format
 
-test: node_modules
+tests: node_modules
 		npm run test
 
 cov: node_modules
 		npm run test:cov
 
-.PHONY: run lint format test cov
+api: node_modules
+		npm run generate:api:files
+
+.PHONY: run lint format tests cov api

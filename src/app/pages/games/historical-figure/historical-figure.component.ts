@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { BigButtonComponent } from '../../../components/common/big-button/big-button.component';
+import { BigButtonComponent } from '@app/components/common/big-button/big-button.component';
 import { NgIf } from '@angular/common';
-import { AbstractQuizz } from '../../../abstract/quizz/abstract-quizz';
+import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
 import { OnInit } from '@angular/core';
 import { tap } from 'rxjs';
-import { Question } from '../../../models/questions.model';
+import { QuestionModel } from '@mocks/models/question.model.mock';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { SmallButtonComponent } from '../../../components/common/small-button/small-button.component';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-historical-figure',
@@ -20,7 +20,7 @@ export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
       .getQuestions('historical-figure')
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        tap((questions: Question[]) => {
+        tap((questions: QuestionModel[]) => {
           this.questions = questions;
           this.nextQuestion();
         }),

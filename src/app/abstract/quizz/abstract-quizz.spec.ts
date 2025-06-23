@@ -1,15 +1,16 @@
 import { AbstractQuizz } from './abstract-quizz';
-import { Question } from '../../models/questions.model';
+import { QuestionModel } from '@mocks/models/question.model.mock';
 import { TestBed } from '@angular/core/testing';
-import { QuizzService } from '../../services/quizz/quizz.service';
+import { QuizzService } from '@app/services/quizz/quizz.service';
 import { DestroyRef, Injector, runInInjectionContext } from '@angular/core';
+import { of } from 'rxjs';
 
 class TestQuizz extends AbstractQuizz {
   public triggerStartGame() {
     this.startGame();
   }
 
-  public setCurrentQuestion(question: Question) {
+  public setCurrentQuestion(question: QuestionModel) {
     this.currentQuestion = question;
   }
 
@@ -17,8 +18,11 @@ class TestQuizz extends AbstractQuizz {
     this.onChoiceSelected(choice);
   }
 
-  public setQuestions(questions: Question[]) {
+  public setQuestions(questions: QuestionModel[]) {
     this.questions = questions;
+    if (questions.length > 0) {
+      this.currentQuestion = questions[0];
+    }
   }
 
   public triggerNextQuestion() {
@@ -30,18 +34,23 @@ class TestQuizz extends AbstractQuizz {
       started: this.gameStarted,
       ended: this.gameEnded,
       current: this.currentQuestion,
-      answers: this.choosenAnswers,
+      answer: this.choosenAnswer,
     };
   }
 }
 
 describe('AbstractQuizz', () => {
   let instance: TestQuizz;
+  let mockQuizzService: Partial<QuizzService>;
 
   beforeEach(() => {
+    mockQuizzService = {
+      answerIsCorrect: jest.fn().mockReturnValue(of({ isAnswerCorrect: true })),
+    };
+
     TestBed.configureTestingModule({
       providers: [
-        { provide: QuizzService, useValue: {} },
+        { provide: QuizzService, useValue: mockQuizzService },
         { provide: DestroyRef, useValue: {} },
       ],
     });
