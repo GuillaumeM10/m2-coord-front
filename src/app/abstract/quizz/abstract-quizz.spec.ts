@@ -1,5 +1,4 @@
 import { AbstractQuizz } from './abstract-quizz';
-import { QuestionModel } from '@mocks/models/question.model.mock';
 import { TestBed } from '@angular/core/testing';
 import { QuizzService } from '@app/services/quizz/quizz.service';
 import { DestroyRef, Injector, runInInjectionContext } from '@angular/core';
@@ -8,25 +7,6 @@ import { of } from 'rxjs';
 class TestQuizz extends AbstractQuizz {
   public triggerStartGame() {
     this.startGame();
-  }
-
-  public setCurrentQuestion(question: QuestionModel) {
-    this.currentQuestion = question;
-  }
-
-  public triggerChoice(choice: string) {
-    this.onChoiceSelected(choice);
-  }
-
-  public setQuestions(questions: QuestionModel[]) {
-    this.questions = questions;
-    if (questions.length > 0) {
-      this.currentQuestion = questions[0];
-    }
-  }
-
-  public triggerNextQuestion() {
-    this.nextQuestion();
   }
 
   public getState() {
