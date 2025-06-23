@@ -15,6 +15,11 @@ export const routes: Routes = [
             m => m.HistoricalFigureComponent,
           ),
       },
+      {
+        path: 'flags',
+        loadComponent: () =>
+          import('./pages/games/flags/flags.component').then(m => m.FlagsComponent),
+      },
     ],
   },
 ];
