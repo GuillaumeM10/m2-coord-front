@@ -1,0 +1,25 @@
+<div *ngIf="!gameStarted" class="flex flex-col justify-center items-center h-screen gap-8">
+    <h1 class="m-8">Quizz sur les drapeaux des pays !</h1>
+    <app-big-button (clickEmitter)="startGame()" class="p-4" label="Démarrer" type="submit"></app-big-button>
+</div>
+
+<div *ngIf="gameStarted && !gameEnded">
+    <div class="flex p-4 min-h-screen">
+        <div class="flex flex-col justify-center items-center w-1/2 gap-4">
+            <img alt="question_image" class="w-100 h-100 object-cover rounded-lg" src="{{ currentQuestion?.image }}" />
+        </div>
+        <div class="flex flex-col justify-center items-center w-1/2 gap-4">
+            @for (choice of currentQuestion?.choices; track choice) {
+            <div class="flex items-center justify-items-start gap-2">
+                <input type="radio" name="choice" [value]="choice" (change)="onChoiceSelected(choice)"
+                    class="mr-2 cursor-pointer justify-items-start" />
+                <span class="p-4">{{ choice }}</span>
+            </div>
+            }
+            <app-small-button (clickEmitter)="checkAnswerAndGoNext()" label="Suivant" type="submit"></app-small-button>
+            <app-question-progress [statuses]="questionStatuses"></app-question-progress>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="gameStarted && gameEnded">game ended</div>
