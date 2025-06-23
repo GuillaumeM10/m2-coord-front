@@ -1,6 +1,3 @@
-import { DestroyRef, inject } from '@angular/core';
-import { QuizzService } from '@app/services/quizz/quizz.service';
-import { QuestionModel } from '@mocks/models/question.model.mock';
 
 export abstract class AbstractQuizz {
   protected quizzService = inject(QuizzService);
@@ -10,7 +7,11 @@ export abstract class AbstractQuizz {
   protected currentQuestion: QuestionModel | undefined;
   protected questions: QuestionModel[] | undefined;
   protected destroyRef: DestroyRef = inject(DestroyRef);
-  protected choosenAnswers: { id: string; answer: string }[] = [];
+  protected choosenAnswer: Answer = { questionId: '', answer: '' };
+  protected game = '';
+
+  protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];
+  protected currentQuestionIndex = 0; // <- Ajouté
 
   protected startGame(): void {
     this.gameStarted = true;
@@ -18,20 +19,50 @@ export abstract class AbstractQuizz {
 
   protected onChoiceSelected(choice: string): void {
     if (this.currentQuestion) {
-      this.choosenAnswers.push({
-        id: this.currentQuestion.id,
+      this.choosenAnswer = {
+        questionId: this.currentQuestion.id,
         answer: choice,
-      });
+      };
     }
   }
 
   protected nextQuestion(): void {
-    if (!this.questions || this.questions.length === 0) {
+    this.quizzService.answerIsCorrect(this.choosenAnswer).subscribe({
+      next: isCorrect => {
+        console.log('Bonne réponse :', isCorrect);
+        this.updateQuestionStatus(this.currentQuestionIndex, isCorrect ? 'correct' : 'wrong');
+        this.advanceQuestion();
+      },
+      error: err => {
+        console.error('Erreur lors de la vérification de la réponse :', err);
+        this.updateQuestionStatus(this.currentQuestionIndex, 'wrong');
+        this.advanceQuestion();
+      },
+    });
+  }
+
+  private advanceQuestion(): void {
+    if (!this.questions) {
       this.gameEnded = true;
-      console.log('Game ended. Choosen answers:', this.choosenAnswers);
+      this.currentQuestion = undefined;
+      console.log('Le jeu est terminé.');
       return;
     }
 
-    this.currentQuestion = this.questions.shift();
+    this.currentQuestionIndex++;
+
+    if (this.currentQuestionIndex >= this.questions.length) {
+      this.gameEnded = true;
+      this.currentQuestion = undefined;
+      console.log('Le jeu est terminé.');
+      return;
+    }
+
+    this.currentQuestion = this.questions[this.currentQuestionIndex];
+    this.choosenAnswer = { questionId: '', answer: '' };
+  }
+
+  private updateQuestionStatus(index: number, status: 'correct' | 'wrong') {
+    this.questionStatuses[index] = status;
   }
 }
