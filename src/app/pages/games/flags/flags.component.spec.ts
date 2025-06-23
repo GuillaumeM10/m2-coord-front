@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { FlagsComponent } from './flags.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { QuizzService } from '../../../services/quizz/quizz.service';
+import { of } from 'rxjs';
 
 describe('FlagsComponent', () => {
   let component: FlagsComponent;
@@ -10,6 +12,14 @@ describe('FlagsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FlagsComponent, HttpClientTestingModule],
+      providers: [
+        {
+          provide: QuizzService,
+          useValue: {
+            getQuestions: () => of([]),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FlagsComponent);
