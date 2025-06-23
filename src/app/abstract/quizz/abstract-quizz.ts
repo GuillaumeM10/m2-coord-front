@@ -1,4 +1,3 @@
-// eslint-disable-next-line prettier/prettier
 import { DestroyRef, inject } from '@angular/core';
 import { QuizzService } from '@app/services/quizz/quizz.service';
 import { QuestionModel } from '@mocks/models/question.model.mock';
