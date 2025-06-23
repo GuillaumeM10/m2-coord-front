@@ -3,7 +3,6 @@ import { BigButtonComponent } from '@app/components/common/big-button/big-button
 import { NgIf } from '@angular/common';
 import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
 import { OnInit } from '@angular/core';
-import { tap } from 'rxjs';
 import { QuestionModel } from '@mocks/models/question.model.mock';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
