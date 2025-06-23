@@ -19,7 +19,8 @@ export class FlagsComponent extends AbstractQuizz implements OnInit {
   override currentQuestionIndex = 0;
 
   ngOnInit() {
-    this.quizzService.getQuestions('countries/questions')
+    this.quizzService
+      .getQuestions('countries/questions')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((questions: Question[]) => {
         this.questions = questions;
@@ -29,21 +30,20 @@ export class FlagsComponent extends AbstractQuizz implements OnInit {
       });
   }
 
-protected checkAnswerAndGoNext(): void {
-  this.quizzService.answerIsCorrect(this.choosenAnswer).subscribe({
-    next: (response: { isAnswerCorrect: boolean }) => {
-      const isCorrect = response.isAnswerCorrect;
-      console.log('Réponse du service:', response);
-      this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
-      this.goToNextQuestion();
-    },
-    error: () => {
-      this.questionStatuses[this.currentQuestionIndex] = 'wrong';
-      this.goToNextQuestion();
-    }
-  });
-}
-
+  protected checkAnswerAndGoNext(): void {
+    this.quizzService.answerIsCorrect(this.choosenAnswer).subscribe({
+      next: (response: { isAnswerCorrect: boolean }) => {
+        const isCorrect = response.isAnswerCorrect;
+        console.log('Réponse du service:', response);
+        this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
+        this.goToNextQuestion();
+      },
+      error: () => {
+        this.questionStatuses[this.currentQuestionIndex] = 'wrong';
+        this.goToNextQuestion();
+      },
+    });
+  }
 
   private goToNextQuestion(): void {
     this.currentQuestionIndex++;

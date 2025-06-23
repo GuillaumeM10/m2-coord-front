@@ -15,7 +15,7 @@ export abstract class AbstractQuizz {
   protected game = '';
 
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];
-  protected currentQuestionIndex = 0;  // <- Ajouté
+  protected currentQuestionIndex = 0; // <- Ajouté
 
   protected startGame(): void {
     this.gameStarted = true;
@@ -32,16 +32,16 @@ export abstract class AbstractQuizz {
 
   protected nextQuestion(): void {
     this.quizzService.answerIsCorrect(this.choosenAnswer).subscribe({
-      next: (isCorrect) => {
-        console.log("Bonne réponse :", isCorrect);
+      next: isCorrect => {
+        console.log('Bonne réponse :', isCorrect);
         this.updateQuestionStatus(this.currentQuestionIndex, isCorrect ? 'correct' : 'wrong');
         this.advanceQuestion();
       },
-      error: (err) => {
+      error: err => {
         console.error('Erreur lors de la vérification de la réponse :', err);
         this.updateQuestionStatus(this.currentQuestionIndex, 'wrong');
         this.advanceQuestion();
-      }
+      },
     });
   }
 

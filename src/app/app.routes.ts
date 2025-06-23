@@ -18,9 +18,7 @@ export const routes: Routes = [
       {
         path: 'flags',
         loadComponent: () =>
-          import('./pages/games/flags/flags.component').then(
-            m => m.FlagsComponent,
-          ),
+          import('./pages/games/flags/flags.component').then(m => m.FlagsComponent),
       },
     ],
   },

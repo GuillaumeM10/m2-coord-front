@@ -1,8 +1,7 @@
 import { Question } from '../../models/questions.model';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { historicalFigureQuestionsMock } from '../../../mocks/historical-figure-questions.mock';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environements/environement';
 import { Answer } from '../../models/answer.model';
 
@@ -18,8 +17,7 @@ export class QuizzService {
     return this.http.get<Question[]>(this.url + `/${id}`);
   }
 
-answerIsCorrect(answer: Answer): Observable<{ isAnswerCorrect: boolean }> {
+  answerIsCorrect(answer: Answer): Observable<{ isAnswerCorrect: boolean }> {
     return this.http.post<{ isAnswerCorrect: boolean }>(`${this.url}/answers/validate`, answer);
   }
-
 }
