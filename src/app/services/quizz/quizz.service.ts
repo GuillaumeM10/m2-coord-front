@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environements/environement';
-import { Answer } from '../../models/answer.model';
+import { environment } from '@environments/environment';
 import { QuestionModel } from '@mocks/models/question.model.mock';
 
 @Injectable({
@@ -17,7 +16,10 @@ export class QuizzService {
     return this.http.get<QuestionModel[]>(this.url + `/${id}`);
   }
 
-  answerIsCorrect(answer: Answer): Observable<{ isAnswerCorrect: boolean }> {
+  answerIsCorrect(answer: {
+    questionId: string;
+    answer: string;
+  }): Observable<{ isAnswerCorrect: boolean }> {
     return this.http.post<{ isAnswerCorrect: boolean }>(`${this.url}/answers/validate`, answer);
   }
 }

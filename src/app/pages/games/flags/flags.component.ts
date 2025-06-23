@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BigButtonComponent } from '../../../components/common/big-button/big-button.component';
-import { SmallButtonComponent } from '../../../components/common/small-button/small-button.component';
-import { QuestionProgressComponent } from '../../../components/common/question-progress/question-progress.component';
-import { AbstractQuizz } from '../../../abstract/quizz/abstract-quizz';
+import { BigButtonComponent } from '@app/components/common/big-button/big-button.component';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
+import { QuestionProgressComponent } from '@app/components/common/question-progress/question-progress.component';
+import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
 import { CommonModule } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Question } from '../../../models/questions.model';
+import { QuestionModel } from '@mocks/models/question.model.mock';
 
 @Component({
   selector: 'app-flags',
@@ -22,7 +22,7 @@ export class FlagsComponent extends AbstractQuizz implements OnInit {
     this.quizzService
       .getQuestions('countries/questions')
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((questions: Question[]) => {
+      .subscribe((questions: QuestionModel[]) => {
         this.questions = questions;
         this.questionStatuses = questions.map(() => 'pending');
         this.currentQuestionIndex = 0;
