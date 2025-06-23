@@ -3,28 +3,27 @@ import { BigButtonComponent } from '../../../components/common/big-button/big-bu
 import { NgIf } from '@angular/common';
 import { AbstractQuizz } from '../../../abstract/quizz/abstract-quizz';
 import { OnInit } from '@angular/core';
-import { tap } from 'rxjs';
 import { Question } from '../../../models/questions.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SmallButtonComponent } from '../../../components/common/small-button/small-button.component';
+import { QuestionProgressComponent } from '../../../components/common/question-progress/question-progress.component';
 
 @Component({
   selector: 'app-historical-figure',
-  imports: [BigButtonComponent, NgIf, SmallButtonComponent],
+  imports: [BigButtonComponent, NgIf, SmallButtonComponent, QuestionProgressComponent],
   templateUrl: './historical-figure.component.html',
   styleUrl: './historical-figure.component.scss',
 })
 export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
   ngOnInit() {
     this.quizzService
-      .getQuestions('historical-figure')
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        tap((questions: Question[]) => {
-          this.questions = questions;
-          this.nextQuestion();
-        }),
-      )
-      .subscribe();
+      .getQuestions('historical-figures/questions')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((questions: Question[]) => {
+        this.questions = questions;
+        this.questionStatuses = questions.map(() => 'pending');
+        this.currentQuestionIndex = 0;
+        this.currentQuestion = this.questions[this.currentQuestionIndex];
+      });
   }
 }
