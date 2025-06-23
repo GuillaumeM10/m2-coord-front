@@ -1,4 +1,3 @@
-
 export abstract class AbstractQuizz {
   protected quizzService = inject(QuizzService);
 
