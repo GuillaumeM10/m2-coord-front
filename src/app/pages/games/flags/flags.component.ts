@@ -15,9 +15,6 @@ import { QuestionModel } from '@mocks/models/question.model.mock';
   styleUrls: ['./flags.component.scss'],
 })
 export class FlagsComponent extends AbstractQuizz implements OnInit {
-  override questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];
-  override currentQuestionIndex = 0;
-
   ngOnInit() {
     this.quizzService
       .getQuestions('countries/questions')
@@ -28,31 +25,5 @@ export class FlagsComponent extends AbstractQuizz implements OnInit {
         this.currentQuestionIndex = 0;
         this.currentQuestion = this.questions[this.currentQuestionIndex];
       });
-  }
-
-  protected checkAnswerAndGoNext(): void {
-    this.quizzService.answerIsCorrect(this.choosenAnswer).subscribe({
-      next: (response: { isAnswerCorrect: boolean }) => {
-        const isCorrect = response.isAnswerCorrect;
-        this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
-        this.goToNextQuestion();
-      },
-      error: () => {
-        this.questionStatuses[this.currentQuestionIndex] = 'wrong';
-        this.goToNextQuestion();
-      },
-    });
-  }
-
-  private goToNextQuestion(): void {
-    this.currentQuestionIndex++;
-    if (this.currentQuestionIndex >= (this.questions?.length || 0)) {
-      this.gameEnded = true;
-      this.currentQuestion = undefined;
-      console.log('Le jeu est terminé.');
-    } else {
-      this.currentQuestion = this.questions![this.currentQuestionIndex];
-      this.choosenAnswer = { questionId: '', answer: '' }; // reset réponse
-    }
   }
 }
