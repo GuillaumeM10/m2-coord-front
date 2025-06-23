@@ -6,8 +6,8 @@ import { OnInit } from '@angular/core';
 import { tap } from 'rxjs';
 import { QuestionModel } from '@mocks/models/question.model.mock';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { SmallButtonComponent } from '../../../components/common/small-button/small-button.component';
-import { QuestionProgressComponent } from '../../../components/common/question-progress/question-progress.component';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
+import { QuestionProgressComponent } from '@app/components/common/question-progress/question-progress.component';
 
 @Component({
   selector: 'app-historical-figure',
