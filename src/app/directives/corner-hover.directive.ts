@@ -35,8 +35,8 @@ export class CornerHoverDirective {
     this.dialog.open(EasterEggModalComponent, {
       width: '400px',
       data: {
-        image: 'assets/images/cesar.png',
-        text: '🎉 Bravo, vous avez trouvé l’easter egg !',
+        image: 'rickroll.gif',
+        text: 'Vous avez été rickrolled !',
       },
     });
   }
