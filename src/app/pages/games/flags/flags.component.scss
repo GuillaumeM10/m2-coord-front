@@ -1,0 +1,30 @@
+.funny-element {
+  position: absolute;
+  width: 10vw;
+  height: auto;
+  z-index: 1000;
+}
+
+#fe1 {
+  top: 10vh;
+  right: 20vw;
+  rotate: 35deg;
+}
+
+#fe2 {
+  top: 15vh;
+  left: 12vw;
+  rotate: -15deg;
+}
+
+#fe3 {
+  bottom: 31vh;
+  right: 7vw;
+  rotate: 28deg;
+}
+
+#fe4 {
+  bottom: 29vh;
+  left: 8vw;
+  rotate: -20deg;
+}
