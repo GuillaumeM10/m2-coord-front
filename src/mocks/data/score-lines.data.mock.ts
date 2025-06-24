@@ -1,4 +1,4 @@
-import { ScoreLineModelMock } from '@mocks/models/score-line.model.mock';
+import { ScoreLineModelMock } from '@app/models/score-line.model.mock';
 
 export const scoreLinesDataMock: ScoreLineModelMock[] = [
   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },

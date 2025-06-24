@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
 import { BigButtonComponent } from '@app/components/common/big-button/big-button.component';
 import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 import { QuestionProgressComponent } from '@app/components/common/question-progress/question-progress.component';
-import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
-import { CommonModule } from '@angular/common';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { QuestionModel } from '@mocks/models/question.model.mock';
+
+import { QuestionModel } from '@app/models/question.model';
+import { AnswerNotificationComponent } from '@app/components/answer-notification/answer-notification.component';
 
 @Component({
   selector: 'app-flags',
   standalone: true,
-  imports: [BigButtonComponent, SmallButtonComponent, QuestionProgressComponent, CommonModule],
+  imports: [
+    CommonModule,
+    BigButtonComponent,
+    SmallButtonComponent,
+    QuestionProgressComponent,
+    AnswerNotificationComponent, // 👈 important
+  ],
   templateUrl: './flags.component.html',
   styleUrls: ['./flags.component.scss'],
 })
@@ -25,5 +33,10 @@ export class FlagsComponent extends AbstractQuizz implements OnInit {
         this.currentQuestionIndex = 0;
         this.currentQuestion = this.questions[this.currentQuestionIndex];
       });
+  }
+
+  // 👇 Pour corriger le trackBy
+  trackByChoice(index: number, item: string): string {
+    return item;
   }
 }
