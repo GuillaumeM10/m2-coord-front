@@ -1,4 +1,4 @@
-export interface ScoreLineModelMock {
+export interface ScoreLineModel {
   name: string;
   position: number;
   weight: number;

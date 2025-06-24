@@ -1,0 +1,6 @@
+<div class="scoreboard">
+  <p>{{ correct }} / {{ total }} bonnes réponses</p>
+  <p>{{ message }}</p>
+</div>
+
+<app-big-button (clickEmitter)="onReplay()" [label]="'Rejouer'"></app-big-button>
