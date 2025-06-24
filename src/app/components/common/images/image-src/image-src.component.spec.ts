@@ -13,6 +13,7 @@ describe('ImageSrcComponent', () => {
 
     fixture = TestBed.createComponent(ImageSrcComponent);
     component = fixture.componentInstance;
+    component.src = 'test.png';
     fixture.detectChanges();
   });
 
