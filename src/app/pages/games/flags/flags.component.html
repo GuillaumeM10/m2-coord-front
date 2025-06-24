@@ -6,17 +6,16 @@
     label="Démarrer"
     type="submit"
   ></app-big-button>
-  <img alt="flag1" class="funny-element" id="fe1" src="assets/images/flag1.png">
-  <img alt="flag2" class="funny-element" id="fe2" src="assets/images/flag2.png">
-  <img alt="flag3" class="funny-element" id="fe3" src="assets/images/flag3.png">
-  <img alt="flag4" class="funny-element" id="fe4" src="assets/images/flag4.png">
+  <img alt="flag1" class="funny-element" id="fe1" src="assets/images/flag1.png"/>
+  <img alt="flag2" class="funny-element" id="fe2" src="assets/images/flag2.png"/>
+  <img alt="flag3" class="funny-element" id="fe3" src="assets/images/flag3.png"/>
+  <img alt="flag4" class="funny-element" id="fe4" src="assets/images/flag4.png"/>
 </div>
 
 <div *ngIf="gameStarted && !gameEnded" class="flex flex-col min-h-screen">
-  <div class="flex justify-center items-center mt-8 ">
+  <div class="flex justify-center items-center mt-8">
     <app-question-progress [statuses]="questionStatuses"></app-question-progress>
   </div>
-
 
   <div class="flex px-16 py-10 gap-12 flex-1 items-center">
     <div class="flex items-center justify-center w-1/2">
@@ -35,12 +34,11 @@
             <label
               class="flex items-center gap-4 bg-gray-100 hover:bg-blue-100 border border-gray-300 rounded-xl px-6 py-6 cursor-pointer text-xl transition-all duration-200"
               [ngClass]="{
-            'bg-green-200 text-green-800': showPopup && choice === correctAnswer,
-            'bg-red-200 text-red-800':
-              showPopup && choice === choosenAnswer.answer && choice !== correctAnswer,
-            'opacity-60': showPopup,
+                'bg-green-200 text-green-800': showPopup && choice === correctAnswer,
+                'bg-red-200 text-red-800':
+                  showPopup && choice === choosenAnswer.answer && choice !== correctAnswer,
+                'opacity-60': showPopup,
               }"
-
             >
               <input
                 type="radio"
@@ -51,12 +49,9 @@
                 [disabled]="showPopup"
               />
 
-              <span
-                class="p-4 rounded-lg flex-1"
-
-              >
-          {{ choice }}
-        </span>
+              <span class="p-4 rounded-lg flex-1">
+                {{ choice }}
+              </span>
             </label>
           </ng-container>
         </div>
