@@ -1,7 +1,7 @@
 import { DestroyRef, inject } from '@angular/core';
 import { QuizzService } from '@app/services/quizz/quizz.service';
-import { QuestionModel } from '@mocks/models/question.model.mock';
-import { AnswerModel } from '@mocks/models/answer.model.mock';
+import { QuestionModel } from '@app/models/question.model';
+import { AnswerModel } from '@app/models/answer.model';
 
 export abstract class AbstractQuizz {
   protected quizzService: QuizzService = inject(QuizzService);

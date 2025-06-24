@@ -5,7 +5,7 @@ import { QuestionProgressComponent } from '@app/components/common/question-progr
 import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
 import { CommonModule } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { QuestionModel } from '@mocks/models/question.model.mock';
+import { QuestionModel } from '@app/models/question.model';
 import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
 
 @Component({
