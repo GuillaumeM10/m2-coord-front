@@ -20,6 +20,7 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      "@typescript-eslint/no-inferrable-types": "off",
       "prettier/prettier": "error",
       "@angular-eslint/directive-selector": [
         "error",
