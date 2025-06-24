@@ -1,0 +1,1 @@
+T (2tsX!hrIsrc/app/pages/games/historical-figure/historical-figure.component.spec.ts

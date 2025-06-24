@@ -1,0 +1,1 @@
+ 2tsX%hrsrc/api/base-service.ts

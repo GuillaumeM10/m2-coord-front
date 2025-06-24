@@ -1,0 +1,1 @@
+1 2tsX.hrCsrc/app/components/common/tables/data-table/data-table.component.ts

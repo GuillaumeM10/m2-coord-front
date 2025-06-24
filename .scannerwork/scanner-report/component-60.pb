@@ -1,0 +1,1 @@
+< 2webX,hrFsrc/app/pages/games/historical-figure/historical-figure.component.html

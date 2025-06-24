@@ -1,0 +1,1 @@
+6 2webX,hr.src/app/pages/games/flags/flags.component.html

@@ -1,0 +1,1 @@
+= 2cssXhrFsrc/app/pages/games/historical-figure/historical-figure.component.scss

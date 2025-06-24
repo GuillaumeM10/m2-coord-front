@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>{{ game.name }}</h2>
+<mat-dialog-content>
+  <p>Choisissez une option de jeu :</p>
+
+  <mat-radio-group
+    [(ngModel)]="selectedOption"
+    class="options-group"
+    aria-label="Choix de l'option"
+  >
+    <mat-radio-button *ngFor="let mode of game.modes" [value]="mode">
+      {{ mode }}
+    </mat-radio-button>
+  </mat-radio-group>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-flat-button color="primary" [disabled]="!selectedOption" (click)="play()">
+    JOUER
+  </button>
+  <button mat-button (click)="close()">ANNULER</button>
+</mat-dialog-actions>

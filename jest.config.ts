@@ -16,6 +16,7 @@ const config: Config = {
     '!src/**/*.spec.ts',
     '!src/main.ts',
     '!src/test.ts',
+    '!src/main.server.ts',
     '!src/environments/**',
     '!src/**/*.module.ts',
     '!src/**/*.routing.ts',
@@ -25,10 +26,11 @@ const config: Config = {
     '/node_modules/',
     'src/main.ts',
     'src/test.ts',
+    'src/main.server.ts',
     'src/environments/',
-    'src/**/*.module.ts',
-    'src/**/*.routing.ts',
-    'src/**/mocks/',
+    'src/.*\\.module\\.ts$',
+    'src/.*\\.routing\\.ts$',
+    'src/.*/mocks/.*',
   ],
 };
 
