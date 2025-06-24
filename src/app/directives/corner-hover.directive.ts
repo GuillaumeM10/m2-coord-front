@@ -31,9 +31,7 @@ export class CornerHoverDirective {
 
   @HostListener('document:mousemove', ['$event'])
   private onMouseMove(event: MouseEvent): void {
-    if (!this.cursorIsInCorner(event)) {
-      return;
-    }
+    if (!this.cursorIsInCorner(event)) return;
     this.easterEggService
       .isCtrlPressed()
       .pipe(
@@ -58,11 +56,10 @@ export class CornerHoverDirective {
   }
 
   private openModalIfNot(): void {
-    if (!this.modalIsOpen) {
-      const modalRef: MatDialogRef<EasterEggModalComponent> = this.openEasterEggModal();
-      modalRef.afterClosed().subscribe(() => {
-        this.modalIsOpen = false;
-      });
-    }
+    if (this.modalIsOpen) return;
+    const modalRef: MatDialogRef<EasterEggModalComponent> = this.openEasterEggModal();
+    modalRef.afterClosed().subscribe(() => {
+      this.modalIsOpen = false;
+    });
   }
 }
