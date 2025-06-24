@@ -6,11 +6,12 @@ import { GamesService } from '@app/services/games.service';
 import { GameOptionsDialogComponent } from '@app/components/games/game-options-dialog/game-options-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { GameDto } from '@api/models/game-dto';
+import { CornerHoverDirective } from '@app/directives/corner-hover.directive';
 
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatDialogModule],
+  imports: [CommonModule, MatCardModule, MatDialogModule, CornerHoverDirective],
   providers: [HttpClient],
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.scss'],
