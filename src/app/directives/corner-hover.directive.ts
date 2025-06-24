@@ -12,6 +12,7 @@ export class CornerHoverDirective {
   private cornerRatio: number = 0.95;
 
   private modalIsOpen: boolean = false;
+  private modalHeight: number = 410;
   private modalWidth: number = 400;
   private dataModal: EasterEggModalData = {
     image: 'rickroll.gif',
@@ -47,6 +48,7 @@ export class CornerHoverDirective {
     const modalRef: MatDialogRef<EasterEggModalComponent> = this.dialog.open(
       EasterEggModalComponent,
       {
+        height: this.modalHeight + 'px',
         width: this.modalWidth + 'px',
         data: this.dataModal,
       },
