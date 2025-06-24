@@ -52,4 +52,4 @@
 </div>
 <div *ngIf="gameStarted && gameEnded">game ended</div>
 <app-answer-notification [isCorrect]="isCorrectAnswer" [show]="showPopup"></app-answer-notification>
-<app-scoreboard *ngIf="gameStarted && gameEnded" [recap]="questionStatuses"/>
+<app-scoreboard *ngIf="gameStarted && gameEnded" [recap]="questionStatuses" />

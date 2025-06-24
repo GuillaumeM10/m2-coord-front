@@ -11,7 +11,6 @@ export abstract class AbstractQuizz {
   protected currentQuestion: QuestionModel | undefined;
   protected questions: QuestionModel[] | undefined;
   protected destroyRef: DestroyRef = inject(DestroyRef);
-  protected choosenAnswer: { questionId: string; answer: string } = { questionId: '', answer: '' };
   protected choosenAnswer: AnswerModel = { questionId: '', answer: '' };
   protected game = '';
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];

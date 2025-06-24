@@ -5,11 +5,7 @@ import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
 import { BigButtonComponent } from '@app/components/common/big-button/big-button.component';
 import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 import { QuestionProgressComponent } from '@app/components/common/question-progress/question-progress.component';
-import { QuestionModel } from '@app/models/question.model';
 import { AnswerNotificationComponent } from '@app/components/answer-notification/answer-notification.component';
-import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
-import { CommonModule } from '@angular/common';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { QuestionModel } from '@app/models/question.model';
 import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
 
