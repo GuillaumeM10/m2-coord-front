@@ -36,37 +36,37 @@ export abstract class AbstractQuizz {
     }
   }
 
-protected checkAnswerAndGoNext(): void {
-  if (!this.currentQuestion) return;
+  protected checkAnswerAndGoNext(): void {
+    if (!this.currentQuestion) return;
 
-  this.quizzService.getCorrectAnswer(this.currentQuestion.id).subscribe({
-    next: (response: { correctAnswer: string }) => {
-      this.correctAnswer = response.correctAnswer;
-      const isCorrect = this.choosenAnswer.answer === this.correctAnswer;
+    this.quizzService.getCorrectAnswer(this.currentQuestion.id).subscribe({
+      next: (response: { correctAnswer: string }) => {
+        this.correctAnswer = response.correctAnswer;
+        const isCorrect = this.choosenAnswer.answer === this.correctAnswer;
 
-      console.log('✅ Bonne réponse :', this.correctAnswer);
+        console.log('✅ Bonne réponse :', this.correctAnswer);
 
-      this.isCorrectAnswer = isCorrect;
-      this.showPopup = true;
-      this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
+        this.isCorrectAnswer = isCorrect;
+        this.showPopup = true;
+        this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
 
-      setTimeout(() => {
-        this.showPopup = false;
-        this.goToNextQuestion();
-      }, 1500);
-    },
-    error: () => {
-      this.isCorrectAnswer = false;
-      this.showPopup = true;
-      this.questionStatuses[this.currentQuestionIndex] = 'wrong';
+        setTimeout(() => {
+          this.showPopup = false;
+          this.goToNextQuestion();
+        }, 1500);
+      },
+      error: () => {
+        this.isCorrectAnswer = false;
+        this.showPopup = true;
+        this.questionStatuses[this.currentQuestionIndex] = 'wrong';
 
-      setTimeout(() => {
-        this.showPopup = false;
-        this.goToNextQuestion();
-      }, 1500);
-    }
-  });
-}
+        setTimeout(() => {
+          this.showPopup = false;
+          this.goToNextQuestion();
+        }, 1500);
+      },
+    });
+  }
 
   private goToNextQuestion(): void {
     this.currentQuestionIndex++;

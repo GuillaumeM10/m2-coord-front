@@ -1,32 +1,52 @@
 <div *ngIf="!gameStarted" class="flex flex-col justify-center items-center h-screen gap-8">
   <h1 class="m-8">Quizz sur les drapeaux des pays !</h1>
-  <app-big-button (clickEmitter)="startGame()" class="p-4" label="Démarrer" type="submit"></app-big-button>
+  <app-big-button
+    (clickEmitter)="startGame()"
+    class="p-4"
+    label="Démarrer"
+    type="submit"
+  ></app-big-button>
 </div>
 
 <div *ngIf="gameStarted && !gameEnded" class="flex p-4 min-h-screen">
   <div class="flex flex-col justify-center items-center w-1/2 gap-4">
-    <img alt="question_image" class="max-w-full max-h-[40vh] object-contain rounded-lg"
-      [src]="currentQuestion?.image" />
+    <img
+      alt="question_image"
+      class="max-w-full max-h-[40vh] object-contain rounded-lg"
+      [src]="currentQuestion?.image"
+    />
   </div>
   <div class="flex flex-col justify-center items-start w-1/2 gap-4">
     <ng-container *ngFor="let choice of currentQuestion?.choices; trackBy: trackByChoice">
       <div class="flex items-center gap-2">
-        <input type="radio" name="choice" [value]="choice" (change)="onChoiceSelected(choice)"
-          class="mr-2 cursor-pointer" [disabled]="showPopup" />
+        <input
+          type="radio"
+          name="choice"
+          [value]="choice"
+          (change)="onChoiceSelected(choice)"
+          class="mr-2 cursor-pointer"
+          [disabled]="showPopup"
+        />
 
-        <span class="p-4 rounded-lg" [ngClass]="{
-    'bg-green-200 text-green-800': showPopup && choice === correctAnswer,
-    'bg-red-200 text-red-800': showPopup && choice === choosenAnswer.answer && choice !== correctAnswer,
-    'opacity-60': showPopup
-  }">
+        <span
+          class="p-4 rounded-lg"
+          [ngClass]="{
+            'bg-green-200 text-green-800': showPopup && choice === correctAnswer,
+            'bg-red-200 text-red-800':
+              showPopup && choice === choosenAnswer.answer && choice !== correctAnswer,
+            'opacity-60': showPopup,
+          }"
+        >
           {{ choice }}
         </span>
-
-
       </div>
     </ng-container>
 
-    <app-small-button (clickEmitter)="checkAnswerAndGoNext()" label="Suivant" type="submit"></app-small-button>
+    <app-small-button
+      (clickEmitter)="checkAnswerAndGoNext()"
+      label="Suivant"
+      type="submit"
+    ></app-small-button>
     <app-question-progress [statuses]="questionStatuses"></app-question-progress>
   </div>
 </div>

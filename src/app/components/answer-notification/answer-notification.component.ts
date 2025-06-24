@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AnswerNotificationComponent implements OnChanges {
   @Input() isCorrect: boolean | null = null;
-  @Input() show: boolean = false;
+  @Input() show = false;
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('[Popup] Changement détecté :', changes);
