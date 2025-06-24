@@ -1,6 +1,6 @@
 <div class="page-wrapper" appCornerHover>
   <h2 class="title">🎮 Atlasium</h2>
-
+  <img src="/images/download.jpeg" alt="4" loading="lazy" height="100"/>
   <div class="games-container">
     <mat-card
       *ngFor="let game of games"
@@ -8,7 +8,7 @@
       tabindex="0"
       (click)="openGameOptions(game)"
     >
-      <img mat-card-image [src]="game.photoUrl" alt="{{ game.name }}" />
+      <img mat-card-image [src]="game.photoUrl" alt="{{ game.name }}"/>
       <mat-card-content>
         <h3 class="game-name">{{ game.name }}</h3>
       </mat-card-content>

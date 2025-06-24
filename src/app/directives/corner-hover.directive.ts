@@ -35,7 +35,7 @@ export class CornerHoverDirective {
     this.dialog.open(EasterEggModalComponent, {
       width: '400px',
       data: {
-        image: 'assets/easter-egg.png',
+        image: 'assets/images/cesar.png',
         text: '🎉 Bravo, vous avez trouvé l’easter egg !',
       },
     });
