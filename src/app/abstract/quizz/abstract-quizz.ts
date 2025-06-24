@@ -1,6 +1,7 @@
 import { DestroyRef, inject } from '@angular/core';
 import { QuizzService } from '@app/services/quizz/quizz.service';
-import { QuestionModel } from '@mocks/models/question.model.mock';
+import { QuestionModel } from '@app/models/question.model';
+import { AnswerModel } from '@app/models/answer.model';
 
 export abstract class AbstractQuizz {
   protected quizzService: QuizzService = inject(QuizzService);
@@ -10,8 +11,7 @@ export abstract class AbstractQuizz {
   protected currentQuestion: QuestionModel | undefined;
   protected questions: QuestionModel[] | undefined;
   protected destroyRef: DestroyRef = inject(DestroyRef);
-  // TODO: Fix this type
-  protected choosenAnswer: { questionId: string; answer: string } = { questionId: '', answer: '' };
+  protected choosenAnswer: AnswerModel = { questionId: '', answer: '' };
   protected game = '';
 
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];

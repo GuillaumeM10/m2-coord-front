@@ -40,4 +40,4 @@
   </div>
 </div>
 
-<div *ngIf="gameStarted && gameEnded">game ended</div>
+<app-scoreboard *ngIf="gameStarted && gameEnded" [recap]="questionStatuses"/>

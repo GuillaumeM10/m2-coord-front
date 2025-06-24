@@ -1,4 +1,4 @@
-import { QuestionModel } from '@mocks/models/question.model.mock';
+import { QuestionModel } from '@app/models/question.model';
 
 export const historicalFigureQuestionsDataMock: QuestionModel[] = [
   {
