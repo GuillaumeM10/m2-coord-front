@@ -1,6 +1,7 @@
 import { DestroyRef, inject } from '@angular/core';
 import { QuizzService } from '@app/services/quizz/quizz.service';
 import { QuestionModel } from '@app/models/question.model';
+import { AnswerModel } from '@app/models/answer.model';
 
 export abstract class AbstractQuizz {
   protected quizzService: QuizzService = inject(QuizzService);
@@ -11,6 +12,8 @@ export abstract class AbstractQuizz {
   protected questions: QuestionModel[] | undefined;
   protected destroyRef: DestroyRef = inject(DestroyRef);
   protected choosenAnswer: { questionId: string; answer: string } = { questionId: '', answer: '' };
+  protected choosenAnswer: AnswerModel = { questionId: '', answer: '' };
+  protected game = '';
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];
   protected currentQuestionIndex = 0;
   protected correctAnswer: string | undefined;

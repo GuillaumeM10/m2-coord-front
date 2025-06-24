@@ -1,6 +1,6 @@
-import { ScoreLineModelMock } from '@app/models/score-line.model.mock';
+import { ScoreLineModel } from '@app/models/score-line.model';
 
-export const scoreLinesDataMock: ScoreLineModelMock[] = [
+export const scoreLinesDataMock: ScoreLineModel[] = [
   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
   { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
   { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
