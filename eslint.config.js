@@ -20,7 +20,6 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
-      "@typescript-eslint/consistent-type-definitions": "off",
       "prettier/prettier": "error",
       "@angular-eslint/directive-selector": [
         "error",
@@ -39,6 +38,15 @@ module.exports = tseslint.config(
         },
       ],
     },
+    ignores: [
+      '.angular/**',
+      '.idea/**',
+      '.vscode/**',
+      'dist/**',
+      'node_modules/**',
+      'public/**',
+      'src/api/**',
+    ]
   },
   {
     files: ['**/*.html'],
