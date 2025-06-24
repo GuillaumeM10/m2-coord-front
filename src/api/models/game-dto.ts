@@ -4,6 +4,7 @@
 
 export interface GameDto {
   id: string;
+  key: string;
   modes: Array<'CLASSIC'>;
   name: string;
   photoUrl: string;
