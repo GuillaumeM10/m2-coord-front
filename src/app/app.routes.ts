@@ -9,7 +9,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/games/games.component').then(m => m.GamesComponent),
       },
       {
-        path: 'historical-figure',
+        path: 'historical-figures',
         loadComponent: () =>
           import('./pages/games/historical-figure/historical-figure.component').then(
             m => m.HistoricalFigureComponent,
