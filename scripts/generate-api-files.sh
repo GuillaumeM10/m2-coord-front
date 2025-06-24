@@ -21,4 +21,9 @@ rm -rv --preserve-root "$frontend_api_folder"/*
 
 # Step 2
 echo -e "\nGenerating new API files..."
-ng-openapi-gen --input "${backend_swagger_base_url}${backend_swagger_uri}" --output "$frontend_api_folder"
+npx ng-openapi-gen --input "${backend_swagger_base_url}${backend_swagger_uri}" --output "$frontend_api_folder"
+
+shopt -s extglob
+cd src/api
+rm -rf !(models)
+cd -

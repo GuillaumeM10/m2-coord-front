@@ -6,6 +6,7 @@ import { GamesService } from '@app/services/games.service';
 import { GameOptionsDialogComponent } from '@app/components/games/game-options-dialog/game-options-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { GameDto } from '@api/models/game-dto';
+import { Router } from '@angular/router';
 import { CornerHoverDirective } from '@app/directives/corner-hover.directive';
 
 @Component({
@@ -22,6 +23,7 @@ export class GamesComponent implements OnInit {
   constructor(
     private gamesService: GamesService,
     private dialog: MatDialog,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -31,8 +33,14 @@ export class GamesComponent implements OnInit {
   }
 
   openGameOptions(game: GameDto): void {
-    this.dialog.open(GameOptionsDialogComponent, {
+    const dialogRef = this.dialog.open(GameOptionsDialogComponent, {
       data: game,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.router.navigate(['/games', result.game]).then();
+      }
     });
   }
 }

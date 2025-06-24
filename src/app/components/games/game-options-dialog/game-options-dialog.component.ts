@@ -19,14 +19,14 @@ export class GameOptionsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<GameOptionsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public game: GameDto,
-  ) {
-    console.log('GAME DATA:', game);
-  }
+  ) {}
 
   play() {
     if (this.selectedOption) {
-      console.log('Option choisie :', this.selectedOption);
-      this.dialogRef.close(this.selectedOption);
+      this.dialogRef.close({
+        game: this.game.key,
+        mode: this.selectedOption,
+      });
     }
   }
 
