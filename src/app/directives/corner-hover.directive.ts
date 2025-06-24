@@ -9,6 +9,8 @@ import { EasterEggModalData } from '@app/components/modals/easter-egg-modal/east
   selector: '[appCornerHover]',
 })
 export class CornerHoverDirective {
+  private cornerRatio: number = 0.95;
+
   private modalIsOpen: boolean = false;
   private modalWidth: number = 400;
   private dataModal: EasterEggModalData = {
@@ -19,24 +21,28 @@ export class CornerHoverDirective {
   constructor(
     private easterEggService: EasterEggService,
     private dialog: MatDialog,
-  ) {}
+  ) {
+  }
+
+  private cursorIsInCorner(event: MouseEvent): boolean {
+    return event.clientX > window.innerWidth * this.cornerRatio
+      && event.clientY < window.innerHeight * (1 - this.cornerRatio)
+  }
 
   @HostListener('document:mousemove', ['$event'])
   private onMouseMove(event: MouseEvent): void {
-    const inCorner =
-      event.clientX > window.innerWidth * 0.95 && event.clientY < window.innerHeight * 0.05;
-
-    if (inCorner) {
-      this.easterEggService
-        .isCtrlPressed()
-        .pipe(
-          filter(ctrl => ctrl),
-          take(1),
-        )
-        .subscribe(() => {
-          this.openModalIfNot();
-        });
+    if (!this.cursorIsInCorner(event)) {
+      return;
     }
+    this.easterEggService
+      .isCtrlPressed()
+      .pipe(
+        filter(ctrl => ctrl),
+        take(1),
+      )
+      .subscribe(() => {
+        this.openModalIfNot();
+      });
   }
 
   private openEasterEggModal(): MatDialogRef<EasterEggModalComponent> {
