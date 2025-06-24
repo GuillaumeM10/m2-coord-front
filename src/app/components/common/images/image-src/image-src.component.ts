@@ -1,18 +1,16 @@
-import {Component, Input} from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-image-src',
-  imports: [
-    NgOptimizedImage
-  ],
+  imports: [NgOptimizedImage],
   templateUrl: './image-src.component.html',
-  styleUrl: './image-src.component.css'
+  styleUrl: './image-src.component.css',
 })
 export class ImageSrcComponent {
   private _src!: string;
   private readonly imagesFolder: string = '/images';
-  public readonly loading: "lazy" | "eager" | "auto" | undefined = "lazy";
+  public readonly loading: 'lazy' | 'eager' | 'auto' | undefined = 'lazy';
 
   @Input() public alt: string = 'default alternative text';
   @Input() public height: number = 100;

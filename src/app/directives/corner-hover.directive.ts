@@ -22,12 +22,13 @@ export class CornerHoverDirective {
   constructor(
     private readonly easterEggService: EasterEggService,
     private readonly dialog: MatDialog,
-  ) {
-  }
+  ) {}
 
   private cursorIsInCorner(event: MouseEvent): boolean {
-    return event.clientX > window.innerWidth * this.cornerRatio
-      && event.clientY < window.innerHeight * (1 - this.cornerRatio)
+    return (
+      event.clientX > window.innerWidth * this.cornerRatio &&
+      event.clientY < window.innerHeight * (1 - this.cornerRatio)
+    );
   }
 
   @HostListener('document:mousemove', ['$event'])

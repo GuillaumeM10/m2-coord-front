@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {EventKeyEnum} from '@app/enums/event-key.enum';
+import { EventKeyEnum } from '@app/enums/event-key.enum';
 
 @Injectable({
   providedIn: 'root',
