@@ -8,46 +8,65 @@
   ></app-big-button>
 </div>
 
-<div *ngIf="gameStarted && !gameEnded" class="flex p-4 min-h-screen">
-  <div class="flex flex-col justify-center items-center w-1/2 gap-4">
-    <img
-      alt="question_image"
-      class="max-w-full max-h-[40vh] object-contain rounded-lg"
-      [src]="currentQuestion?.image"
-    />
+<div *ngIf="gameStarted && !gameEnded" class="flex flex-col min-h-screen">
+  <div class="flex justify-center items-center mt-8 ">
+    <app-question-progress [statuses]="questionStatuses"></app-question-progress>
   </div>
-  <div class="flex flex-col justify-center items-start w-1/2 gap-4">
-    <ng-container *ngFor="let choice of currentQuestion?.choices; trackBy: trackByChoice">
-      <div class="flex items-center gap-2">
-        <input
-          type="radio"
-          name="choice"
-          [value]="choice"
-          (change)="onChoiceSelected(choice)"
-          class="mr-2 cursor-pointer"
-          [disabled]="showPopup"
-        />
 
-        <span
-          class="p-4 rounded-lg"
-          [ngClass]="{
+
+  <div class="flex px-16 py-10 gap-12 flex-1 items-center">
+    <div class="flex items-center justify-center w-1/2">
+      <img
+        alt="question_image"
+        class="rounded-xl shadow-lg border-4 border-white h-max object-contain"
+        [src]="currentQuestion?.image"
+      />
+    </div>
+
+    <div class="flex flex-col justify-between w-1/2 bg-white p-10 rounded-2xl shadow-xl">
+      <div class="flex flex-col gap-4">
+        <h2 class="text-2xl font-bold mb-4">Quel est ce drapeau ?</h2>
+        <div class="flex flex-col gap-4 h-[50vh] justify-evenly">
+          <ng-container *ngFor="let choice of currentQuestion?.choices; trackBy: trackByChoice">
+            <label
+              class="flex items-center gap-4 bg-gray-100 hover:bg-blue-100 border border-gray-300 rounded-xl px-6 py-6 cursor-pointer text-xl transition-all duration-200"
+              [ngClass]="{
             'bg-green-200 text-green-800': showPopup && choice === correctAnswer,
             'bg-red-200 text-red-800':
               showPopup && choice === choosenAnswer.answer && choice !== correctAnswer,
             'opacity-60': showPopup,
-          }"
-        >
+              }"
+
+            >
+              <input
+                type="radio"
+                name="choice"
+                [value]="choice"
+                (change)="onChoiceSelected(choice)"
+                class="accent-blue-600 w-6 h-6"
+                [disabled]="showPopup"
+              />
+
+              <span
+                class="p-4 rounded-lg flex-1"
+
+              >
           {{ choice }}
         </span>
+            </label>
+          </ng-container>
+        </div>
       </div>
-    </ng-container>
 
-    <app-small-button
-      (clickEmitter)="checkAnswerAndGoNext()"
-      label="Suivant"
-      type="submit"
-    ></app-small-button>
-    <app-question-progress [statuses]="questionStatuses"></app-question-progress>
+      <div class="flex justify-center mt-6">
+        <app-big-button
+          (clickEmitter)="checkAnswerAndGoNext()"
+          label="Suivant"
+          type="submit"
+          [disabled]="submitButtonDisabled"
+        />
+      </div>
+    </div>
   </div>
 </div>
 <div *ngIf="gameStarted && gameEnded">game ended</div>
