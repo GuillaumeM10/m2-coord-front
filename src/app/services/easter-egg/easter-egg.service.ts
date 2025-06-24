@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class EasterEggService {
     }
   }
 
-  isCtrlPressed() {
+  public isCtrlPressed(): Observable<boolean> {
     return this.ctrlPressed$.asObservable();
   }
 }

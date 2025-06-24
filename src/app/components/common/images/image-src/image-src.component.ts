@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
 
 @Component({
@@ -20,7 +20,9 @@ export class ImageSrcComponent {
 
   @Input()
   public set src(value: string) {
-    if (value[0] === '/') {
+    if (value.includes(this.imagesFolder)) {
+      this._src = value;
+    } else if (value[0] === '/') {
       this._src = this.imagesFolder + value;
     } else {
       this._src = this.imagesFolder + '/' + value;
