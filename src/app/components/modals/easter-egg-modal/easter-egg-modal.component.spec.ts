@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {EasterEggModalComponent} from './easter-egg-modal.component';
+import { EasterEggModalComponent } from './easter-egg-modal.component';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EasterEggModalData } from './easter-egg-modal-data.type';
 
@@ -11,7 +11,7 @@ describe('EasterEggModalComponent', () => {
   const modalData: EasterEggModalData = {
     image: 'test.png',
     text: 'just a test',
-  }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,9 +19,9 @@ describe('EasterEggModalComponent', () => {
       providers: [
         {
           provide: MAT_DIALOG_DATA,
-          useValue: modalData
-        }
-      ]
+          useValue: modalData,
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EasterEggModalComponent);
