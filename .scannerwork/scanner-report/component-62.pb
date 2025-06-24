@@ -1,1 +1,0 @@
-> 2tsXhrDsrc/app/pages/games/historical-figure/historical-figure.component.ts

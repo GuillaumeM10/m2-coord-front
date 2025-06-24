@@ -1,1 +1,0 @@
-- 2cssX hrBsrc/app/components/common/small-button/small-button.component.scss

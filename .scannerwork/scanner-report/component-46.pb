@@ -1,1 +1,0 @@
-. 2tsXhr@src/app/components/common/small-button/small-button.component.ts
