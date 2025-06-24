@@ -10,5 +10,5 @@ import {ImageSrcComponent} from '@app/components/common/images/image-src/image-s
   styleUrl: './easter-egg-modal.component.css',
 })
 export class EasterEggModalComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: EasterEggModalData) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public readonly data: EasterEggModalData) {}
 }

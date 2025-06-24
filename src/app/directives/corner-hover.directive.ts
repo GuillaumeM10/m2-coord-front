@@ -9,19 +9,19 @@ import { EasterEggModalData } from '@app/components/modals/easter-egg-modal/east
   selector: '[appCornerHover]',
 })
 export class CornerHoverDirective {
-  private cornerRatio: number = 0.95;
+  private readonly cornerRatio: number = 0.95;
 
   private modalIsOpen: boolean = false;
-  private modalHeight: number = 410;
-  private modalWidth: number = 400;
-  private dataModal: EasterEggModalData = {
+  private readonly modalHeight: number = 410;
+  private readonly modalWidth: number = 400;
+  private readonly dataModal: EasterEggModalData = {
     image: 'rickroll.gif',
     text: 'Vous avez été rickrolled !',
   };
 
   constructor(
-    private easterEggService: EasterEggService,
-    private dialog: MatDialog,
+    private readonly easterEggService: EasterEggService,
+    private readonly dialog: MatDialog,
   ) {
   }
 

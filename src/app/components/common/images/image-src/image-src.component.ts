@@ -11,8 +11,8 @@ import {NgOptimizedImage} from '@angular/common';
 })
 export class ImageSrcComponent {
   private _src!: string;
-  private imagesFolder: string = '/images';
-  public loading: "lazy" | "eager" | "auto" | undefined = "lazy";
+  private readonly imagesFolder: string = '/images';
+  public readonly loading: "lazy" | "eager" | "auto" | undefined = "lazy";
 
   @Input() public alt: string = 'default alternative text';
   @Input() public height: number = 100;
