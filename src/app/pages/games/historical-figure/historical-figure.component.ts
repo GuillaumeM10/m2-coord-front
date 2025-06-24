@@ -17,9 +17,10 @@ import { QuestionProgressComponent } from '@app/components/common/question-progr
 export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
   ngOnInit() {
     this.quizzService
-      .getQuestions('historical-figures/questions')
+      .getQuestions('figures/questions')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((questions: QuestionModel[]) => {
+        console.log(questions);
         this.questions = questions;
         this.questionStatuses = questions.map(() => 'pending');
         this.currentQuestionIndex = 0;
