@@ -9,14 +9,14 @@ import { QuestionModel } from '@app/models/question.model';
 })
 export class QuizzService {
   private http: HttpClient = inject(HttpClient);
-  private url = environment.apiUrl; // Replace with your actual API endpoint
 
   getQuestions(id: string): Observable<QuestionModel[]> {
-    console.log(`Fetching questions for ID: ${id}`);
-    return this.http.get<QuestionModel[]>(this.url + `/${id}`);
+    return this.http.get<QuestionModel[]>(`${environment.apiUrl}/${id}`);
   }
 
   getCorrectAnswer(questionId: string): Observable<{ correctAnswer: string }> {
-    return this.http.get<{ correctAnswer: string }>(`${this.url}/answers/correct/${questionId}`);
+    return this.http.get<{ correctAnswer: string }>(
+      `${environment.apiUrl}/answers/correct/${questionId}`,
+    );
   }
 }
