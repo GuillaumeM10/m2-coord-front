@@ -14,7 +14,7 @@ export class ImageSrcComponent {
   private imagesFolder: string = '/images';
   public loading: "lazy" | "eager" | "auto" | undefined = "lazy";
 
-  @Input() public alt!: string;
+  @Input() public alt: string = 'default alternative text';
   @Input() public height: number = 100;
   @Input() public width: number = 100;
 
