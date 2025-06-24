@@ -16,10 +16,7 @@ export class QuizzService {
     return this.http.get<QuestionModel[]>(this.url + `/${id}`);
   }
 
-  answerIsCorrect(answer: {
-    questionId: string;
-    answer: string;
-  }): Observable<{ isAnswerCorrect: boolean }> {
-    return this.http.post<{ isAnswerCorrect: boolean }>(`${this.url}/answers/validate`, answer);
+  getCorrectAnswer(questionId: string): Observable<{ correctAnswer: string }> {
+    return this.http.get<{ correctAnswer: string }>(`${this.url}/answers/correct/${questionId}`);
   }
 }

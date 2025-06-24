@@ -1,0 +1,4 @@
+<div *ngIf="show" class="popup" [ngClass]="{ correct: isCorrect, wrong: isCorrect === false }">
+  <span *ngIf="isCorrect">Bonne réponse !</span>
+  <span *ngIf="isCorrect === false">Mauvaise réponse !</span>
+</div>
