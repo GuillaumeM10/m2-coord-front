@@ -24,6 +24,10 @@ const config: Config = {
     '!src/**/mocks/**',
   ],
   coveragePathIgnorePatterns: [
+    'src/server.ts',
+    'src/app/app.*.server.ts',
+    'src/app/app.routes.ts',
+    'src/app/app.config.ts',
     '/node_modules/',
     'src/main.ts',
     'src/test.ts',
