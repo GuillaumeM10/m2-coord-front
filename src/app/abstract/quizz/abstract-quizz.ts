@@ -4,8 +4,10 @@ import { QuestionModel } from '@app/models/question.model';
 import { AnswerModel } from '@app/models/answer.model';
 
 export abstract class AbstractQuizz {
+  // Variables pour la popup
+  public showPopup = false;
+  public isCorrectAnswer: boolean | null = null;
   protected quizzService: QuizzService = inject(QuizzService);
-
   protected gameStarted = false;
   protected gameEnded = false;
   protected currentQuestion: QuestionModel | undefined;
@@ -16,10 +18,7 @@ export abstract class AbstractQuizz {
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];
   protected currentQuestionIndex = 0;
   protected correctAnswer: string | undefined;
-
-  // Variables pour la popup
-  public showPopup = false;
-  public isCorrectAnswer: boolean | null = null;
+  protected submitButtonDisabled = false;
 
   protected startGame(): void {
     this.gameStarted = true;
@@ -40,6 +39,7 @@ export abstract class AbstractQuizz {
 
   protected checkAnswerAndGoNext(): void {
     if (!this.currentQuestion) return;
+    this.submitButtonDisabled = true;
 
     this.quizzService.getCorrectAnswer(this.currentQuestion.id).subscribe({
       next: (response: { correctAnswer: string }) => {
@@ -53,6 +53,7 @@ export abstract class AbstractQuizz {
         this.questionStatuses[this.currentQuestionIndex] = isCorrect ? 'correct' : 'wrong';
 
         setTimeout(() => {
+          this.submitButtonDisabled = false;
           this.showPopup = false;
           this.goToNextQuestion();
         }, 1500);
@@ -63,6 +64,7 @@ export abstract class AbstractQuizz {
         this.questionStatuses[this.currentQuestionIndex] = 'wrong';
 
         setTimeout(() => {
+          this.submitButtonDisabled = false;
           this.showPopup = false;
           this.goToNextQuestion();
         }, 1500);

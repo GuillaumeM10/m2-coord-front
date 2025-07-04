@@ -1,5 +1,5 @@
-<div class="page-wrapper">
-  <h2 class="title">🎮 Atlasium</h2>
+<div appCornerHover>
+  <h2>🎮 Atlasium</h2>
 
   <div class="games-container">
     <mat-card
@@ -8,7 +8,7 @@
       tabindex="0"
       (click)="openGameOptions(game)"
     >
-      <img mat-card-image [src]="game.photoUrl" alt="{{ game.name }}" />
+      <img [src]="'/images/' + game.photoUrl" alt="{{ game.name }}" mat-card-image/>
       <mat-card-content>
         <h3 class="game-name">{{ game.name }}</h3>
       </mat-card-content>

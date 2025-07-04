@@ -7,11 +7,12 @@ import { GameOptionsDialogComponent } from '@app/components/games/game-options-d
 import { HttpClient } from '@angular/common/http';
 import { GameDto } from '@api/models/game-dto';
 import { Router } from '@angular/router';
+import { CornerHoverDirective } from '@app/directives/corner-hover.directive';
 
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatDialogModule],
+  imports: [CommonModule, MatCardModule, MatDialogModule, CornerHoverDirective],
   providers: [HttpClient],
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.scss'],
