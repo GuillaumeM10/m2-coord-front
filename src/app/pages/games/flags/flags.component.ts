@@ -15,7 +15,7 @@ import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboar
     CommonModule,
     BigButtonComponent,
     QuestionProgressComponent,
-    AnswerNotificationComponent, // 👈 important
+    AnswerNotificationComponent,
     ScoreboardComponent,
   ],
   templateUrl: './flags.component.html',
