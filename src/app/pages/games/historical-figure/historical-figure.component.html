@@ -21,7 +21,7 @@
     <div class="flex items-center justify-center w-1/2">
       <img
         alt="question_image"
-        class="rounded-xl shadow-lg border-4 border-white h-max object-contain"
+        class="rounded-xl shadow-lg border-4 border-white h-max object-contain max-h-[70vh] "
         [src]="currentQuestion?.image"
       />
     </div>
@@ -68,6 +68,5 @@
     </div>
   </div>
 </div>
-<div *ngIf="gameStarted && gameEnded">game ended</div>
 <app-answer-notification [isCorrect]="isCorrectAnswer" [show]="showPopup"></app-answer-notification>
 <app-scoreboard *ngIf="gameStarted && gameEnded" [recap]="questionStatuses" />
