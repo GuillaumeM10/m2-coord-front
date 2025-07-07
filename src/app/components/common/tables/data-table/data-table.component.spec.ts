@@ -31,7 +31,10 @@ describe('DataTableComponent', () => {
     });
 
     it('should leave displayedColumns empty if dataSource is not an array', () => {
-      component.dataSource = ({ connect: () => null, disconnect: () => {} } as any) as CdkTableDataSourceInput<unknown>;
+      component.dataSource = {
+        connect: () => null,
+        disconnect: () => {},
+      } as any as CdkTableDataSourceInput<unknown>;
       component.ngOnInit();
       expect(component.displayedColumns).toEqual([]);
     });

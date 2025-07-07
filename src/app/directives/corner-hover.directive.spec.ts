@@ -1,8 +1,8 @@
-import {CornerHoverDirective} from './corner-hover.directive';
-import {EasterEggService} from '@app/services/easter-egg/easter-egg.service';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {EasterEggModalComponent} from '@app/components/modals/easter-egg-modal/easter-egg-modal.component';
-import {of, Subject, from} from 'rxjs';
+import { CornerHoverDirective } from './corner-hover.directive';
+import { EasterEggService } from '@app/services/easter-egg/easter-egg.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EasterEggModalComponent } from '@app/components/modals/easter-egg-modal/easter-egg-modal.component';
+import { of, Subject, from } from 'rxjs';
 
 describe('CornerHoverDirective', () => {
   let directive: CornerHoverDirective;
@@ -17,28 +17,33 @@ describe('CornerHoverDirective', () => {
 
     // EasterEggService spy
     easterEggService = {
-      isCtrlPressed: jest.fn()
+      isCtrlPressed: jest.fn(),
     } as unknown as jest.Mocked<EasterEggService>;
 
     // MatDialogRef spy
     mockDialogRef = {
-      afterClosed: jest.fn().mockReturnValue(afterClosedSubject.asObservable())
+      afterClosed: jest.fn().mockReturnValue(afterClosedSubject.asObservable()),
     } as unknown as jest.Mocked<MatDialogRef<EasterEggModalComponent>>;
 
     // MatDialog spy
     matDialog = {
-      open: jest.fn().mockReturnValue(mockDialogRef)
+      open: jest.fn().mockReturnValue(mockDialogRef),
     } as unknown as jest.Mocked<MatDialog>;
 
     // Instanciation de la directive
-    directive = new CornerHoverDirective(
-      easterEggService,
-      matDialog,
-    );
+    directive = new CornerHoverDirective(easterEggService, matDialog);
 
     // Fixer la taille de la fenêtre
-    Object.defineProperty(window, 'innerWidth', {writable: true, configurable: true, value: 1000});
-    Object.defineProperty(window, 'innerHeight', {writable: true, configurable: true, value: 800});
+    Object.defineProperty(window, 'innerWidth', {
+      writable: true,
+      configurable: true,
+      value: 1000,
+    });
+    Object.defineProperty(window, 'innerHeight', {
+      writable: true,
+      configurable: true,
+      value: 800,
+    });
   });
 
   it('should create an instance', () => {
@@ -48,17 +53,17 @@ describe('CornerHoverDirective', () => {
   describe('cursorIsInCorner()', () => {
     const ratio = 0.95;
     it('returns true when pointer is in the top-right corner', () => {
-      const event = {clientX: 1000 * ratio + 1, clientY: 800 * (1 - ratio) - 1} as MouseEvent;
+      const event = { clientX: 1000 * ratio + 1, clientY: 800 * (1 - ratio) - 1 } as MouseEvent;
       expect((directive as any).cursorIsInCorner(event)).toBe(true);
     });
 
     it('returns false when X is too small', () => {
-      const event = {clientX: 1000 * ratio - 10, clientY: 10} as MouseEvent;
+      const event = { clientX: 1000 * ratio - 10, clientY: 10 } as MouseEvent;
       expect((directive as any).cursorIsInCorner(event)).toBe(false);
     });
 
     it('returns false when Y is too large', () => {
-      const event = {clientX: 1000 * ratio + 1, clientY: 800 * (1 - ratio) + 10} as MouseEvent;
+      const event = { clientX: 1000 * ratio + 1, clientY: 800 * (1 - ratio) + 10 } as MouseEvent;
       expect((directive as any).cursorIsInCorner(event)).toBe(false);
     });
   });
@@ -69,8 +74,8 @@ describe('CornerHoverDirective', () => {
 
     beforeEach(() => {
       const ratio = 0.95;
-      cornerEvent = {clientX: 1000 * ratio + 1, clientY: 800 * (1 - ratio) - 1} as MouseEvent;
-      nonCornerEvent = {clientX: 100, clientY: 100} as MouseEvent;
+      cornerEvent = { clientX: 1000 * ratio + 1, clientY: 800 * (1 - ratio) - 1 } as MouseEvent;
+      nonCornerEvent = { clientX: 100, clientY: 100 } as MouseEvent;
       jest.clearAllMocks();
     });
 
@@ -92,17 +97,14 @@ describe('CornerHoverDirective', () => {
       directive['onMouseMove'](cornerEvent);
 
       expect(easterEggService.isCtrlPressed).toHaveBeenCalledTimes(1);
-      expect(matDialog.open).toHaveBeenCalledWith(
-        EasterEggModalComponent,
-        {
-          height: '410px',
-          width: '400px',
-          data: {
-            image: 'rickroll.gif',
-            text: 'Vous avez été rickrolled !',
-          },
-        }
-      );
+      expect(matDialog.open).toHaveBeenCalledWith(EasterEggModalComponent, {
+        height: '410px',
+        width: '400px',
+        data: {
+          image: 'rickroll.gif',
+          text: 'Vous avez été rickrolled !',
+        },
+      });
       expect((directive as any).modalIsOpen).toBe(true);
     });
 
@@ -134,17 +136,14 @@ describe('CornerHoverDirective', () => {
   describe('openEasterEggModal()', () => {
     it('opens dialog with correct config and sets modalIsOpen', () => {
       const ref = (directive as any).openEasterEggModal() as MatDialogRef<EasterEggModalComponent>;
-      expect(matDialog.open).toHaveBeenCalledWith(
-        EasterEggModalComponent,
-        {
-          height: '410px',
-          width: '400px',
-          data: {
-            image: 'rickroll.gif',
-            text: 'Vous avez été rickrolled !',
-          },
-        }
-      );
+      expect(matDialog.open).toHaveBeenCalledWith(EasterEggModalComponent, {
+        height: '410px',
+        width: '400px',
+        data: {
+          image: 'rickroll.gif',
+          text: 'Vous avez été rickrolled !',
+        },
+      });
       expect(ref).toBe(mockDialogRef);
       expect((directive as any).modalIsOpen).toBe(true);
     });

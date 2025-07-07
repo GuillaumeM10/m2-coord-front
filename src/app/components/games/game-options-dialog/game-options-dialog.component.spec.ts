@@ -1,13 +1,13 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {GameOptionsDialogComponent} from './game-options-dialog.component';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {GameDto} from '@api/models/game-dto';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GameOptionsDialogComponent } from './game-options-dialog.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { GameDto } from '@api/models/game-dto';
 
 describe('GameOptionsDialogComponent', () => {
   let component: GameOptionsDialogComponent;
   let fixture: ComponentFixture<GameOptionsDialogComponent>;
   let mockDialogRef: jest.Mocked<MatDialogRef<GameOptionsDialogComponent>>;
-  const fakeGame: GameDto = {key: 'test-game'} as GameDto;
+  const fakeGame: GameDto = { key: 'test-game' } as GameDto;
 
   beforeEach(async () => {
     mockDialogRef = {
@@ -17,8 +17,8 @@ describe('GameOptionsDialogComponent', () => {
     await TestBed.configureTestingModule({
       imports: [GameOptionsDialogComponent],
       providers: [
-        {provide: MatDialogRef, useValue: mockDialogRef},
-        {provide: MAT_DIALOG_DATA, useValue: fakeGame},
+        { provide: MatDialogRef, useValue: mockDialogRef },
+        { provide: MAT_DIALOG_DATA, useValue: fakeGame },
       ],
     }).compileComponents();
 

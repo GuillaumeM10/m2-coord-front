@@ -129,7 +129,7 @@ describe('AbstractQuizz', () => {
   it('should properly handle setTimeout in error case', () => {
     // Mock the service to throw an error
     (mockQuizzService.getCorrectAnswer as jest.Mock).mockReturnValueOnce(
-      throwError(() => new Error('API error'))
+      throwError(() => new Error('API error')),
     );
 
     // Set up spy on setTimeout

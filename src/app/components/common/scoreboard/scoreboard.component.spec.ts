@@ -13,14 +13,14 @@ describe('ScoreboardComponent', () => {
     // Define a custom location object with a mock reload method
     const mockLocation = {
       ...window.location,
-      reload: jest.fn()
+      reload: jest.fn(),
     };
 
     // Replace window.location with our mock version using Object.defineProperty
     Object.defineProperty(window, 'location', {
       configurable: true,
       value: mockLocation,
-      writable: true
+      writable: true,
     });
 
     await TestBed.configureTestingModule({
@@ -37,7 +37,7 @@ describe('ScoreboardComponent', () => {
     Object.defineProperty(window, 'location', {
       configurable: true,
       value: originalLocation,
-      writable: true
+      writable: true,
     });
   });
 
