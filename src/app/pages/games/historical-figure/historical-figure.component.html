@@ -1,4 +1,5 @@
 <div *ngIf="!gameStarted" class="flex flex-col justify-center items-center h-screen gap-8">
+  <app-small-button (clickEmitter)="goBack()" label="Revenir" type="button" />
   <h1 class="m-8">Quizz sur les personnages historiques !</h1>
   <app-big-button
     (clickEmitter)="startGame()"

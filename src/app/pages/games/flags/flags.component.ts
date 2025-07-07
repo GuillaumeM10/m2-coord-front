@@ -7,6 +7,8 @@ import { QuestionProgressComponent } from '@app/components/common/question-progr
 import { AnswerNotificationComponent } from '@app/components/answer-notification/answer-notification.component';
 import { QuestionModel } from '@app/models/question.model';
 import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
+import { Router } from '@angular/router';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-flags',
@@ -17,11 +19,16 @@ import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboar
     QuestionProgressComponent,
     AnswerNotificationComponent,
     ScoreboardComponent,
+    SmallButtonComponent,
   ],
   templateUrl: './flags.component.html',
   styleUrls: ['./flags.component.scss'],
 })
 export class FlagsComponent extends AbstractQuizz implements OnInit {
+  constructor(private router: Router) {
+    super();
+  }
+
   ngOnInit() {
     this.game = 'flags';
     this.quizzService
@@ -38,5 +45,9 @@ export class FlagsComponent extends AbstractQuizz implements OnInit {
   // 👇 Pour corriger le trackBy
   trackByChoice(index: number, item: string): string {
     return item;
+  }
+
+  async goBack(): Promise<void> {
+    await this.router.navigate(['/games']);
   }
 }

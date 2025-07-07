@@ -1,9 +1,5 @@
 <div class="top-bar">
-  <app-small-button
-    (clickEmitter)="goToMenu()"
-    label="Retour"
-    type="button"
-  />
+  <app-small-button (clickEmitter)="goToMenu()" label="Retour" type="button" />
 </div>
 
 <div class="history-page">
@@ -22,9 +18,7 @@
     <ul>
       <li *ngFor="let entry of history[game]">
         <span class="date">{{ formatDate(entry.date) }}</span>
-        <span class="score">
-          Score : {{ entry.correctAnswers }}/{{ entry.totalQuestions }}
-        </span>
+        <span class="score"> Score : {{ entry.correctAnswers }}/{{ entry.totalQuestions }} </span>
       </li>
     </ul>
   </div>
