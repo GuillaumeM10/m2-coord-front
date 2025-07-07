@@ -5,7 +5,7 @@ _STYLE_RESET='\033[0m'
 _STYLE_COLOR_RED='\033[31m'
 
 # Constants
-backend_swagger_base_url="http://localhost:3000"  # TODO: To replace by the production environment URL
+backend_swagger_base_url="https://m2-coord-back.onrender.com"
 backend_swagger_uri="/api-json"
 frontend_api_folder=src/api
 
