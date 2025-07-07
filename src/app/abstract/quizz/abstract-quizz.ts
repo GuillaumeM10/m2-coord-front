@@ -8,6 +8,7 @@ export abstract class AbstractQuizz {
   // Variables pour la popup
   public showPopup = false;
   public isCorrectAnswer: boolean | null = null;
+  public selectedChoice: string = '';
   protected quizzService: QuizzService = inject(QuizzService);
   protected historyService: HistoryService = inject(HistoryService);
   protected gameStarted = false;
@@ -20,6 +21,16 @@ export abstract class AbstractQuizz {
   protected questionStatuses: ('pending' | 'correct' | 'wrong')[] = [];
   protected currentQuestionIndex = 0;
   protected correctAnswer: string | undefined;
+  protected questionRadioGroupName = 'question-group';
+
+  get submitButtonDisabled(): boolean {
+    return !this.choosenAnswer.answer || this.showPopup;
+  }
+
+  public onRadioChange(choice: string): void {
+    this.selectedChoice = choice;
+    this.onChoiceSelected(choice);
+  }
 
   protected startGame(): void {
     this.gameStarted = true;
@@ -27,6 +38,7 @@ export abstract class AbstractQuizz {
     this.currentQuestion = this.questions ? this.questions[0] : undefined;
     this.correctAnswer = this.currentQuestion?.correctAnswer;
     this.questionStatuses = this.questions?.map(() => 'pending') || [];
+    this.questionRadioGroupName = `question-group-${Date.now()}`;
   }
 
   protected onChoiceSelected(choice: string): void {
@@ -89,9 +101,8 @@ export abstract class AbstractQuizz {
       this.correctAnswer = this.currentQuestion.correctAnswer;
       this.choosenAnswer = { questionId: '', answer: '' }; // reset réponse
     }
-  }
-
-  get submitButtonDisabled(): boolean {
-    return !this.choosenAnswer.answer || this.showPopup;
+    this.selectedChoice = '';
+    this.choosenAnswer = { questionId: '', answer: '' };
+    this.questionRadioGroupName = `question-group-${Date.now()}`;
   }
 }
