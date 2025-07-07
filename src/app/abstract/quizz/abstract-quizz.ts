@@ -2,12 +2,14 @@ import { DestroyRef, inject } from '@angular/core';
 import { QuizzService } from '@app/services/quizz/quizz.service';
 import { QuestionModel } from '@app/models/question.model';
 import { AnswerModel } from '@app/models/answer.model';
+import { HistoryService } from '@app/services/history/history.service';
 
 export abstract class AbstractQuizz {
   // Variables pour la popup
   public showPopup = false;
   public isCorrectAnswer: boolean | null = null;
   protected quizzService: QuizzService = inject(QuizzService);
+  protected historyService: HistoryService = inject(HistoryService);
   protected gameStarted = false;
   protected gameEnded = false;
   protected currentQuestion: QuestionModel | undefined;
@@ -78,6 +80,13 @@ export abstract class AbstractQuizz {
       this.gameEnded = true;
       this.currentQuestion = undefined;
       this.correctAnswer = undefined;
+
+      this.historyService.addEntry(this.game, {
+        date: new Date().toISOString(),
+        totalQuestions: this.questions?.length || 0,
+        correctAnswers: this.questionStatuses.filter(r => r === 'correct').length,
+      });
+
       console.log('Le jeu est terminé.');
     } else {
       this.currentQuestion = this.questions![this.currentQuestionIndex];

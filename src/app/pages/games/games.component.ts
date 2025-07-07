@@ -8,11 +8,18 @@ import { HttpClient } from '@angular/common/http';
 import { GameDto } from '@api/models/game-dto';
 import { Router } from '@angular/router';
 import { CornerHoverDirective } from '@app/directives/corner-hover.directive';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatDialogModule, CornerHoverDirective],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatDialogModule,
+    CornerHoverDirective,
+    SmallButtonComponent,
+  ],
   providers: [HttpClient],
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.scss'],
@@ -42,5 +49,9 @@ export class GamesComponent implements OnInit {
         this.router.navigate(['/games', result.game]).then();
       }
     });
+  }
+
+  goToHistory(): void {
+    this.router.navigate(['/history']);
   }
 }

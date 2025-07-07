@@ -23,6 +23,7 @@ import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboar
 })
 export class FlagsComponent extends AbstractQuizz implements OnInit {
   ngOnInit() {
+    this.game = 'flags';
     this.quizzService
       .getQuestions('countries/questions')
       .pipe(takeUntilDestroyed(this.destroyRef))
