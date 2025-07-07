@@ -31,4 +31,13 @@ export const routes: Routes = [
     path: 'history',
     loadComponent: () => import('./pages/history/history.component').then(m => m.HistoryComponent),
   },
+  {
+    path: 'error-resolver',
+    loadComponent: () => import('./pages/games/flags/flags.component').then(m => m.FlagsComponent),
+    resolve: {
+      fail: () => {
+        throw new Error('Erreur dans le resolver');
+      },
+    },
+  },
 ];
