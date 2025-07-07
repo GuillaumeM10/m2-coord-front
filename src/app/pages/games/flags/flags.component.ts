@@ -8,7 +8,7 @@ import { AnswerNotificationComponent } from '@app/components/answer-notification
 import { QuestionModel } from '@app/models/question.model';
 import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
 import { Router } from '@angular/router';
-import {SmallButtonComponent} from '@app/components/common/small-button/small-button.component';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-flags',
@@ -25,10 +25,7 @@ import {SmallButtonComponent} from '@app/components/common/small-button/small-bu
   styleUrls: ['./flags.component.scss'],
 })
 export class FlagsComponent extends AbstractQuizz implements OnInit {
-
-  constructor(
-    private router: Router,
-  ) {
+  constructor(private router: Router) {
     super();
   }
 

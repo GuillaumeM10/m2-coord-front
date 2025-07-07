@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {BigButtonComponent} from '@app/components/common/big-button/big-button.component';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
-import {AbstractQuizz} from '@app/abstract/quizz/abstract-quizz';
-import {QuestionModel} from '@app/models/question.model';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {QuestionProgressComponent} from '@app/components/common/question-progress/question-progress.component';
-import {AnswerNotificationComponent} from '@app/components/answer-notification/answer-notification.component';
-import {ScoreboardComponent} from '@app/components/common/scoreboard/scoreboard.component';
-import {Router} from '@angular/router';
-import {SmallButtonComponent} from '@app/components/common/small-button/small-button.component';
+import { Component, OnInit } from '@angular/core';
+import { BigButtonComponent } from '@app/components/common/big-button/big-button.component';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
+import { QuestionModel } from '@app/models/question.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { QuestionProgressComponent } from '@app/components/common/question-progress/question-progress.component';
+import { AnswerNotificationComponent } from '@app/components/answer-notification/answer-notification.component';
+import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
+import { Router } from '@angular/router';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-historical-figure',
@@ -26,9 +26,7 @@ import {SmallButtonComponent} from '@app/components/common/small-button/small-bu
   styleUrl: './historical-figure.component.scss',
 })
 export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
-  constructor(
-    private router: Router,
-  ) {
+  constructor(private router: Router) {
     super();
   }
 
