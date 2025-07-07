@@ -24,6 +24,7 @@ import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboar
 })
 export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
   ngOnInit() {
+    this.game = 'historical-figures';
     this.quizzService
       .getQuestions('figures/questions')
       .pipe(takeUntilDestroyed(this.destroyRef))
