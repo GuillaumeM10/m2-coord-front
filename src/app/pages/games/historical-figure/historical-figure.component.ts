@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { BigButtonComponent } from '@app/components/common/big-button/big-button.component';
-import { NgClass, NgForOf, NgIf } from '@angular/common';
-import { AbstractQuizz } from '@app/abstract/quizz/abstract-quizz';
-import { QuestionModel } from '@app/models/question.model';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { QuestionProgressComponent } from '@app/components/common/question-progress/question-progress.component';
-import { AnswerNotificationComponent } from '@app/components/answer-notification/answer-notification.component';
-import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
+import {Component, OnInit} from '@angular/core';
+import {BigButtonComponent} from '@app/components/common/big-button/big-button.component';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {AbstractQuizz} from '@app/abstract/quizz/abstract-quizz';
+import {QuestionModel} from '@app/models/question.model';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {QuestionProgressComponent} from '@app/components/common/question-progress/question-progress.component';
+import {AnswerNotificationComponent} from '@app/components/answer-notification/answer-notification.component';
+import {ScoreboardComponent} from '@app/components/common/scoreboard/scoreboard.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-historical-figure',
@@ -23,6 +24,12 @@ import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboar
   styleUrl: './historical-figure.component.scss',
 })
 export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
+  constructor(
+    private router: Router,
+  ) {
+    super();
+  }
+
   ngOnInit() {
     this.game = 'historical-figures';
     this.quizzService
@@ -39,5 +46,9 @@ export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
 
   trackByChoice(index: number, item: string): string {
     return item;
+  }
+
+  async goBack(): Promise<void> {
+    await this.router.navigate(['/games']);
   }
 }

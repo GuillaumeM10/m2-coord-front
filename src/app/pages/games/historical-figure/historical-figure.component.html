@@ -1,4 +1,10 @@
 <div *ngIf="!gameStarted" class="flex flex-col justify-center items-center h-screen gap-8">
+  <app-big-button
+    (clickEmitter)="goBack()"
+    class="p-4"
+    label="Revenir"
+    type="submit"
+  ></app-big-button>
   <h1 class="m-8">Quizz sur les personnages historiques !</h1>
   <app-big-button
     (clickEmitter)="startGame()"
@@ -6,10 +12,10 @@
     label="Démarrer"
     type="submit"
   ></app-big-button>
-  <img alt="figure1" class="funny-element" id="fe1" src="/images/napoleon.png" />
-  <img alt="figure2" class="funny-element" id="fe2" src="/images/marie.png" />
-  <img alt="figure3" class="funny-element" id="fe3" src="/images/cleopatre.png" />
-  <img alt="figure4" class="funny-element" id="fe4" src="/images/cesar.png" />
+  <img alt="figure1" class="funny-element" id="fe1" src="/images/napoleon.png"/>
+  <img alt="figure2" class="funny-element" id="fe2" src="/images/marie.png"/>
+  <img alt="figure3" class="funny-element" id="fe3" src="/images/cleopatre.png"/>
+  <img alt="figure4" class="funny-element" id="fe4" src="/images/cesar.png"/>
 </div>
 
 <div *ngIf="gameStarted && !gameEnded" class="flex flex-col min-h-screen">
@@ -69,4 +75,4 @@
   </div>
 </div>
 <app-answer-notification [isCorrect]="isCorrectAnswer" [show]="showPopup"></app-answer-notification>
-<app-scoreboard *ngIf="gameStarted && gameEnded" [recap]="questionStatuses" />
+<app-scoreboard *ngIf="gameStarted && gameEnded" [recap]="questionStatuses"/>
