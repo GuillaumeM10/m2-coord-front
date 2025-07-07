@@ -7,6 +7,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { QuestionProgressComponent } from '@app/components/common/question-progress/question-progress.component';
 import { AnswerNotificationComponent } from '@app/components/answer-notification/answer-notification.component';
 import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
+import { Router } from '@angular/router';
+import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-historical-figure',
@@ -18,11 +20,16 @@ import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboar
     ScoreboardComponent,
     NgClass,
     NgForOf,
+    SmallButtonComponent,
   ],
   templateUrl: './historical-figure.component.html',
   styleUrl: './historical-figure.component.scss',
 })
 export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
+  constructor(private router: Router) {
+    super();
+  }
+
   ngOnInit() {
     this.game = 'historical-figures';
     this.quizzService
@@ -39,5 +46,9 @@ export class HistoricalFigureComponent extends AbstractQuizz implements OnInit {
 
   trackByChoice(index: number, item: string): string {
     return item;
+  }
+
+  async goBack(): Promise<void> {
+    await this.router.navigate(['/games']);
   }
 }
