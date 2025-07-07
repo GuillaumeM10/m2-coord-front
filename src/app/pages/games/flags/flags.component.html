@@ -43,9 +43,10 @@
             >
               <input
                 type="radio"
-                name="choice"
+                [attr.name]="questionRadioGroupName"
                 [value]="choice"
-                (change)="onChoiceSelected(choice)"
+                [checked]="selectedChoice === choice"
+                (change)="onRadioChange(choice)"
                 class="accent-blue-600 w-6 h-6"
                 [disabled]="showPopup"
               />

@@ -9,6 +9,7 @@ import { AnswerNotificationComponent } from '@app/components/answer-notification
 import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
 import { Router } from '@angular/router';
 import { SmallButtonComponent } from '@app/components/common/small-button/small-button.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-historical-figure',
@@ -21,6 +22,7 @@ import { SmallButtonComponent } from '@app/components/common/small-button/small-
     NgClass,
     NgForOf,
     SmallButtonComponent,
+    FormsModule,
   ],
   templateUrl: './historical-figure.component.html',
   styleUrl: './historical-figure.component.scss',

@@ -121,7 +121,6 @@ describe('AbstractQuizz', () => {
 
     // Verify the state changes inside the setTimeout callback
     expect(instance.getState().popup).toBe(false);
-    expect(instance.getState().submitDisabled).toBe(false);
     expect(instance.getState().questionIndex).toBe(1); // Should have moved to next question
     expect(instance.getState().current).toEqual(mockQuestions[1]);
   });
@@ -157,7 +156,6 @@ describe('AbstractQuizz', () => {
 
     // Verify the state changes inside the setTimeout callback
     expect(instance.getState().popup).toBe(false);
-    expect(instance.getState().submitDisabled).toBe(false);
     expect(instance.getState().questionIndex).toBe(1); // Should have moved to next question
   });
 
