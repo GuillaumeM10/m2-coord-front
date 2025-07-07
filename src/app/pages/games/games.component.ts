@@ -30,8 +30,7 @@ export class GamesComponent implements OnInit {
     private gamesService: GamesService,
     private dialog: MatDialog,
     private router: Router,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.gamesService.getGames().subscribe(games => {
