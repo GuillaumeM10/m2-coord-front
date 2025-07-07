@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { GamesService } from '@app/services/games.service';
-import { GameOptionsDialogComponent } from '@app/components/games/game-options-dialog/game-options-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { GameDto } from '@api/models/game-dto';
 import { Router } from '@angular/router';
@@ -40,15 +39,17 @@ export class GamesComponent implements OnInit {
   }
 
   openGameOptions(game: GameDto): void {
-    const dialogRef = this.dialog.open(GameOptionsDialogComponent, {
-      data: game,
-    });
+    // Open mode popup to select game modes
+    // const dialogRef = this.dialog.open(GameOptionsDialogComponent, {
+    //   data: game,
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     this.router.navigate(['/games', result.game]).then();
+    //   }
+    // });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.router.navigate(['/games', result.game]).then();
-      }
-    });
+    this.router.navigate(['/games', game.key]).then();
   }
 
   goToHistory(): void {
