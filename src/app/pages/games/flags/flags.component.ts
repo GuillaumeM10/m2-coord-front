@@ -8,6 +8,7 @@ import { AnswerNotificationComponent } from '@app/components/answer-notification
 import { QuestionModel } from '@app/models/question.model';
 import { ScoreboardComponent } from '@app/components/common/scoreboard/scoreboard.component';
 import { Router } from '@angular/router';
+import {SmallButtonComponent} from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-flags',
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
     QuestionProgressComponent,
     AnswerNotificationComponent,
     ScoreboardComponent,
+    SmallButtonComponent,
   ],
   templateUrl: './flags.component.html',
   styleUrls: ['./flags.component.scss'],

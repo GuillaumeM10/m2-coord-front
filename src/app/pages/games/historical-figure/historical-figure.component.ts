@@ -8,6 +8,7 @@ import {QuestionProgressComponent} from '@app/components/common/question-progres
 import {AnswerNotificationComponent} from '@app/components/answer-notification/answer-notification.component';
 import {ScoreboardComponent} from '@app/components/common/scoreboard/scoreboard.component';
 import {Router} from '@angular/router';
+import {SmallButtonComponent} from '@app/components/common/small-button/small-button.component';
 
 @Component({
   selector: 'app-historical-figure',
@@ -19,6 +20,7 @@ import {Router} from '@angular/router';
     ScoreboardComponent,
     NgClass,
     NgForOf,
+    SmallButtonComponent,
   ],
   templateUrl: './historical-figure.component.html',
   styleUrl: './historical-figure.component.scss',
