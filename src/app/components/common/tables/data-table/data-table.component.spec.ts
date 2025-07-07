@@ -21,7 +21,7 @@ describe('DataTableComponent', () => {
 
   describe('ngOnInit()', () => {
     it('should populate displayedColumns from the keys of the first object when dataSource is a non-empty array', () => {
-      const rows: Array<Record<string, unknown>> = [
+      const rows: Record<string, unknown>[] = [
         { id: 1, name: 'Alice', active: true },
         { id: 2, name: 'Bob', active: false },
       ];
@@ -33,8 +33,7 @@ describe('DataTableComponent', () => {
     it('should leave displayedColumns empty if dataSource is not an array', () => {
       component.dataSource = {
         connect: () => null,
-        disconnect: () => {},
-      } as any as CdkTableDataSourceInput<unknown>;
+      } as unknown as CdkTableDataSourceInput<unknown>;
       component.ngOnInit();
       expect(component.displayedColumns).toEqual([]);
     });
