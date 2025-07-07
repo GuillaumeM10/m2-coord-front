@@ -1,0 +1,31 @@
+<div class="top-bar">
+  <app-small-button
+    (clickEmitter)="goToMenu()"
+    label="Retour"
+    type="button"
+  />
+</div>
+
+<div class="history-page">
+  <h1>Historique des jeux</h1>
+
+  <div *ngIf="Object.keys(history).length === 0" class="empty">
+    <p>Aucun historique enregistré.</p>
+  </div>
+
+  <div *ngFor="let game of Object.keys(history)" class="game-history">
+    <div class="header">
+      <h2>{{ getGameLabel(game) }}</h2>
+      <button (click)="clearHistory(game)">Effacer</button>
+    </div>
+
+    <ul>
+      <li *ngFor="let entry of history[game]">
+        <span class="date">{{ formatDate(entry.date) }}</span>
+        <span class="score">
+          Score : {{ entry.correctAnswers }}/{{ entry.totalQuestions }}
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DataTableComponent } from './data-table.component';
+import { CdkTableDataSourceInput } from '@angular/cdk/table';
 
 describe('DataTableComponent', () => {
   let component: DataTableComponent;
@@ -13,10 +13,34 @@ describe('DataTableComponent', () => {
 
     fixture = TestBed.createComponent(DataTableComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('ngOnInit()', () => {
+    it('should populate displayedColumns from the keys of the first object when dataSource is a non-empty array', () => {
+      const rows: Record<string, unknown>[] = [
+        { id: 1, name: 'Alice', active: true },
+        { id: 2, name: 'Bob', active: false },
+      ];
+      component.dataSource = rows as CdkTableDataSourceInput<unknown>;
+      component.ngOnInit();
+      expect(component.displayedColumns).toEqual(['id', 'name', 'active']);
+    });
+
+    it('should leave displayedColumns empty if dataSource is not an array', () => {
+      component.dataSource = {
+        connect: () => null,
+      } as unknown as CdkTableDataSourceInput<unknown>;
+      component.ngOnInit();
+      expect(component.displayedColumns).toEqual([]);
+    });
+
+    it('should throw TypeError when dataSource is an empty array', () => {
+      component.dataSource = [] as CdkTableDataSourceInput<unknown>;
+      expect(() => component.ngOnInit()).toThrow(TypeError);
+    });
   });
 });

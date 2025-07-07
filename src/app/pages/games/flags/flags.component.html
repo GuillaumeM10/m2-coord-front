@@ -1,15 +1,10 @@
 <div *ngIf="!gameStarted" class="flex flex-col justify-center items-center h-screen gap-8">
   <h1 class="m-8">Quizz sur les drapeaux des pays !</h1>
-  <app-big-button
-    (clickEmitter)="startGame()"
-    class="p-4"
-    label="Démarrer"
-    type="submit"
-  ></app-big-button>
-  <img alt="flag1" class="funny-element" id="fe1" src="/images/flag1.png"/>
-  <img alt="flag2" class="funny-element" id="fe2" src="/images/flag2.png"/>
-  <img alt="flag3" class="funny-element" id="fe3" src="/images/flag3.png"/>
-  <img alt="flag4" class="funny-element" id="fe4" src="/images/flag4.png"/>
+  <app-big-button (clickEmitter)="startGame()" class="p-4" label="Démarrer" type="submit"></app-big-button>
+  <img alt="flag1" class="funny-element" id="fe1" src="/images/flag1.png" />
+  <img alt="flag2" class="funny-element" id="fe2" src="/images/flag2.png" />
+  <img alt="flag3" class="funny-element" id="fe3" src="/images/flag3.png" />
+  <img alt="flag4" class="funny-element" id="fe4" src="/images/flag4.png" />
 </div>
 
 <div *ngIf="gameStarted && !gameEnded" class="flex flex-col min-h-screen">
@@ -19,11 +14,8 @@
 
   <div class="flex px-16 py-10 gap-12 flex-1 items-center">
     <div class="flex items-center justify-center w-1/2">
-      <img
-        alt="question_image"
-        class="rounded-xl shadow-lg border-4 border-white h-max object-contain"
-        [src]="currentQuestion?.image"
-      />
+      <img alt="question_image" class="rounded-xl shadow-lg border-4 border-white h-max object-contain"
+        [src]="currentQuestion?.image" />
     </div>
 
     <div class="flex flex-col justify-between w-1/2 bg-white p-10 rounded-2xl shadow-xl">
@@ -38,16 +30,9 @@
                 'bg-red-200 text-red-800':
                   showPopup && choice === choosenAnswer.answer && choice !== correctAnswer,
                 'opacity-60': showPopup,
-              }"
-            >
-              <input
-                type="radio"
-                name="choice"
-                [value]="choice"
-                (change)="onChoiceSelected(choice)"
-                class="accent-blue-600 w-6 h-6"
-                [disabled]="showPopup"
-              />
+              }">
+              <input type="radio" name="choice" [value]="choice" (change)="onChoiceSelected(choice)"
+                class="accent-blue-600 w-6 h-6" [disabled]="showPopup" />
 
               <span class="p-4 rounded-lg flex-1">
                 {{ choice }}
@@ -58,12 +43,8 @@
       </div>
 
       <div class="flex justify-center mt-6">
-        <app-big-button
-          (clickEmitter)="checkAnswerAndGoNext()"
-          label="Suivant"
-          type="submit"
-          [disabled]="submitButtonDisabled"
-        />
+        <app-big-button (clickEmitter)="checkAnswerAndGoNext()" label="Suivant" type="submit"
+          [disabled]="submitButtonDisabled" />
       </div>
     </div>
   </div>
